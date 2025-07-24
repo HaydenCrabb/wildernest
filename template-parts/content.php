@@ -21,8 +21,8 @@
 		}
 	?>
 
-	<div class="post-inner max-width center-aligned">
-		<div class="content ">
+	<div class="post-inner">
+		<div class="content max-width center-aligned">
 			<?php
 			the_content( __( 'Continue reading', 'twentytwenty' ) );
 

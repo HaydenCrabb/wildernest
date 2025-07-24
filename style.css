@@ -39,15 +39,23 @@ img {
 	width: 100%;
 }
 
-.max-width {
+.max-width > * {
 	max-width: 60rem;
-	padding-top: 0em;
-	padding-bottom: 0em;
 	padding-left: var(--document-padding);
 	padding-right: var(--document-padding);
 }
 
-.center-aligned {
+.max-width > .alignfull {
+	padding-left: 0px;
+	padding-right: 0px;
+	max-width: none;
+}
+
+.alignfull {
+	width: 100% !important;
+}
+
+.center-aligned > * {
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -55,6 +63,9 @@ img {
 .no-scroll {
   overflow: hidden;
   height: 100%;
+}
+.post-inner > .content {
+	margin
 }
 
 
