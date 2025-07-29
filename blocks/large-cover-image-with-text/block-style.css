@@ -1,0 +1,86 @@
+.cover-image-section {
+	width: 100%;
+	height: 80vh;
+	background-position: center;
+	background-size: cover;
+	position: relative;
+}
+
+.cover-image-section .cover-image-section-cover {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 5;
+}
+
+.cover-image-section .text-container {
+	position: absolute;
+	left: 50%;
+	top: 45%;
+	transform: translate(-50%,-50%);
+	z-index: 10;
+	min-width: 70%;
+}
+
+.cover-image-section .text-container::before {
+  content: '';
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  width: 100%;
+  height: 40vh;
+  background: radial-gradient(ellipse, black 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  opacity: 0.45;
+  z-index: 1;
+}
+
+.cover-image-section .header-container,
+.cover-image-section .cover-paragraph-container {
+	position: relative;
+	text-align: center;
+	z-index: 10;
+}
+
+.cover-image-section .header {
+	font-size: 1.5rem;
+}
+
+.cover-image-section .button-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+
+@media ( min-width: 480px ) {
+
+	.cover-image-section .header {
+		font-size: 1.8rem;
+	}
+
+}
+
+
+@media ( min-width: 600px ) {
+
+	.cover-image-section .header {
+		font-size: 2rem;
+	}
+
+
+}
+
+/* Breakpoint from mobile to desktop */
+@media ( min-width: 782px ) {
+
+
+}
+
+
+@media ( min-width: 1100px ) {
+
+
+}

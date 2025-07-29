@@ -1,0 +1,40 @@
+{
+  "apiVersion": 3,
+  "name": "hcsolutions/large-cover-image-with-text",
+  "title": "Cover Image Section",
+  "category": "layout",
+  "editorScript": "file:./block-index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./block-style.css",
+  "render": "file:./large-cover-image-with-text.php",
+  "attributes": {
+    "background_image": {
+      "type": "object",
+      "default": null
+    },
+    "overlay_color": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "overlay_opacity": {
+      "type": "number",
+      "default": 0.15
+    },
+    "header": {
+      "type": "string",
+      "default": ""
+    },
+    "paragraph": {
+      "type": "string",
+      "default": ""
+    },
+    "buttonText": {
+      "type": "string",
+      "default": ""
+    },
+    "buttonUrl": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}

@@ -1,21 +1,14 @@
-/**
- * @wordpress/block-editor
- * @wordpress/blocks
- * @wordpress/element
- */
-
 console.log('Registering side-by-side block…');
 
-//Check to ensure wp is loaded. 
-wp.domReady(function () {
+( function (blocks, element, blockEditor, components ) {
 
 	// actual block code. 
-	const { registerBlockType } = wp.blocks;
-	const { createElement } = wp.element;
-	const { MediaUpload, MediaUploadCheck, RichText } = wp.blockEditor;
-	const { Button } = wp.components;
+	const { registerBlockType } = blocks;
+	const { createElement } = element;
+	const { MediaUpload, MediaUploadCheck, RichText } = blockEditor;
+	const { Button } = components;
 
-	registerBlockType('hcsolutions/side-by-side-section', {
+	blocks.registerBlockType('hcsolutions/side-by-side-section', {
 		title: 'Side-by-Side Section',
 		icon: {
 		  src: wp.element.createElement(
@@ -154,6 +147,4 @@ wp.domReady(function () {
 			return null; // server-rendered by PHP
 		}
 	});
-
-	//End actual block code. 
-});
+} )(window.wp.blocks, window.wp.element, window.wp.blockEditor, window.wp.components);
