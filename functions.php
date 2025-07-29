@@ -120,9 +120,17 @@ add_action('enqueue_block_editor_assets', function () {
 		filemtime( get_template_directory() . '/blocks/side-by-side-section/block-index.js' ),
 		true
 	);
+	wp_enqueue_script(
+		'hc-block-manual',
+		get_template_directory_uri() . '/blocks/textured-text-section/block-index.js',
+		['wp-blocks', 'wp-element', 'wp-editor', 'wp-block-editor', 'wp-dom-ready'],
+		filemtime( get_template_directory() . '/blocks/textured-text-section/block-index.js' ),
+		true
+	);
 });
 
 add_action('init', function () {
 	//registers the side by side section block on the frontend: 
 	register_block_type( get_template_directory() . '/blocks/side-by-side-section' );
+	register_block_type( get_template_directory() . '/blocks/textured-text-section' );
 });

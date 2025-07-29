@@ -1,0 +1,34 @@
+.side-by-side-section {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	height: 70vh;
+}
+
+.side-by-side-section .side-by-side-column {
+	width: 50%;
+	height: auto;
+}
+
+.side-by-side-section .inner-image-container {
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: center;
+}
+
+.side-by-side-section .inner-image-container:hover {
+	cursor: pointer;
+}
+.side-by-side-section .hover-text {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	transform: translate(-50%,-50%);
+	font-size: 1.5rem;
+	text-align: center;
+	z-index: 5;
+	color: white;
+}

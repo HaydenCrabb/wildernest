@@ -1,0 +1,14 @@
+{
+  "apiVersion": 2,
+  "name": "hcsolutions/side-by-side-section",
+  "title": "Side-by-Side Section",
+  "category": "layout",
+  "description": "Two large images with optional text in-between",
+  "supports": {
+    "html": false
+  },
+  "editorScript": [ "file:./block-index.js", "wp-blocks", "wp-element", "wp-block-editor" ],
+  "editorStyle": "file:./editor.css",
+  "style": "file:./block-style.css",
+  "render": "file:./side-by-side-section.php"
+}
