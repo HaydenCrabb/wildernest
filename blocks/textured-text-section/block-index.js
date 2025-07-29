@@ -4,7 +4,7 @@
  * @wordpress/element
  */
 
-console.log('Registering side-by-side block…');
+console.log('Registering textured-text block…');
 
 //Check to ensure wp is loaded. 
 wp.domReady(function () {
@@ -15,8 +15,8 @@ wp.domReady(function () {
 	const { MediaUpload, MediaUploadCheck, RichText } = wp.blockEditor;
 	const { Button } = wp.components;
 
-	registerBlockType('hcsolutions/side-by-side-section', {
-		title: 'Side-by-Side Section',
+	registerBlockType('hcsolutions/textured-text-section', {
+		title: 'textured-text Section',
 		icon: {
 		  src: wp.element.createElement(
 		    'svg',
@@ -81,68 +81,24 @@ wp.domReady(function () {
 			try {
 			    const { attributes, setAttributes } = props;
 
-			    var hasLeftImage = !!attributes.leftImage;
-    			var hasRightImage = !!attributes.rightImage;
-
 			    return createElement(
 			      'div',
-			      { className: 'side-by-side-section alignfull' },
+			      { className: 'textured-text-section alignfull' },
 			      // Editable Text
 			      createElement(RichText, {
 			        tagName: 'div',
-			        className: 'hover-text',
-			        value: attributes.hoverText,
-			        onChange: (val) => setAttributes({ hoverText: val }),
-			        placeholder: 'Add hover text…',
+			        className: 'header-text',
+			        value: attributes.headerText,
+			        onChange: (val) => setAttributes({ headerText: val }),
+			        placeholder: 'Add header text…',
 			      }),
-
-			      // Left Image Upload
-			      createElement('div', { className: 'left-image side-by-side-column' },
-			        createElement(MediaUploadCheck, null,
-			          createElement(MediaUpload, {
-			            onSelect: (media) => setAttributes({ leftImage: media }),
-			            allowedTypes: ['image'],
-			            value: attributes.leftImage?.id,
-			            render: ({ open }) =>
-			              hasLeftImage
-			                ? createElement('div', {
-			                	onClick: open, isSecondary: true,
-			                    className: 'inner-image-container',
-			                    style: {
-			                      backgroundImage: 'url("' + attributes.leftImage.url + '")',
-			                    }
-			                  })
-			                : createElement(Button, { 
-			                	onClick: open, isSecondary: true,
-			                	className: 'select-image-button' 
-			                }, 'Select Left Image')
-			          })
-			        )
-			      ),
-
-			      // Right Image Upload
-			      createElement('div', { className: 'right-image side-by-side-column' },
-			        createElement(MediaUploadCheck, null,
-			          createElement(MediaUpload, {
-			            onSelect: (media) => setAttributes({ rightImage: media }),
-			            allowedTypes: ['image'],
-			            value: attributes.rightImage?.id,
-			            render: ({ open }) =>
-			              hasRightImage
-			                ? createElement('div', {
-			                	onClick: open, isSecondary: true,
-			                    className: 'inner-image-container',
-			                    style: {
-			                      backgroundImage: 'url("' + attributes.rightImage.url + '")',
-			                    }
-			                  })
-			                : createElement(Button, { 
-			                	onClick: open, isSecondary: true,
-			                	className: 'select-image-button' 
-			                }, 'Select Right Image')
-			          })
-			        )
-			      )
+			      createElement(RichText, {
+			        tagName: 'div',
+			        className: 'body-text',
+			        value: attributes.bodyText,
+			        onChange: (val) => setAttributes({ bodyText: val }),
+			        placeholder: 'Add body text…',
+			      }),
 			    );
 			}
 			catch (e) {

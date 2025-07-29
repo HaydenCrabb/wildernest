@@ -1,7 +1,7 @@
 {
   "apiVersion": 2,
-  "name": "hcsolutions/side-by-side-section",
-  "title": "Side-by-Side Section",
+  "name": "hcsolutions/textured-text-section",
+  "title": "textured-text Section",
   "category": "layout",
   "description": "Two large images with optional text in-between",
   "supports": {
@@ -10,5 +10,5 @@
   "editorScript": [ "file:./block-index.js", "wp-blocks", "wp-element", "wp-block-editor" ],
   "editorStyle": "file:./editor.css",
   "style": "file:./block-style.css",
-  "render": "file:./side-by-side-section.php"
+  "render": "file:./textured-text-section.php"
 }

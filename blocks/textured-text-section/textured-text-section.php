@@ -1,38 +1,36 @@
 <?php
 /**
- * Render callback for the Side-by-Side Section block.
+ * Render callback for the textured-text Section block.
  *
  * @param array $attributes Block attributes.
  * @param string $content Inner block content (not used here).
  * @return string HTML output.
  */
 
-$left_image_url  = $attributes['leftImage']['url'] ?? '';
-$right_image_url = $attributes['rightImage']['url'] ?? '';
-$hover_text  = $attributes['hoverText'] ?? '';
+$header_text  = $attributes['headerText'] ?? '';
+$body_text  = $attributes['bodyText'] ?? '';
+$color = $attributes['color'] ?? '';
 
 ?>
-<div class="side-by-side-section alignfull">
+<div <?php
+    if ($header_text != '') { ?>
+      style="color: <?php echo esc_html($color); ?> "
+    <?php
+    } 
+  ?> class="textured-text-section alignfull">
   <?php
-    if ($hover_text != '') { ?>
-      <div class="hover-text-container">
-        <div class="hover-text"><?php echo esc_html($hover_text); ?></div>
+    if ($header_text != '') { ?>
+      <div class="header-text-container">
+        <div class="header-text"><?php echo esc_html($header_text); ?></div>
       </div>
     <?php
     } 
   ?>
-
-  <div class="left-image side-by-side-column">
-    <?php if ( $left_image_url ) : ?>
-      <div class="inner-image-container" style="background-image: url(<?php echo esc_url($left_image_url); ?>)">
+  <?php
+    if ($body_text != '') { ?>
+      <div class="body-text-container">
+        <div class="body-text"><?php echo esc_html($body_text); ?></div>
       </div>
-    <?php endif; ?>
-  </div>
-
-  <div class="right-image side-by-side-column">
-    <?php if ( $right_image_url ) : ?>
-      <div class="inner-image-container" style="background-image: url(<?php echo esc_url($right_image_url); ?>)">
-      </div>
-    <?php endif; ?>
-  </div>
-</div>
+    <?php
+    } 
+  ?>
