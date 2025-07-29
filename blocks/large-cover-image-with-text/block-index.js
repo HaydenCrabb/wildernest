@@ -88,7 +88,7 @@ console.log("Registering cover Image");
 									onChange: (val) => setAttributes({ buttonText: val }),
 									placeholder: 'Add Button Text…',
 								}),
-								el(wp.editor.URLInput, {
+								el(wp.blockEditor.URLInput, {
 									value: attributes.buttonUrl,
 									onChange: (val) => setAttributes({ buttonUrl: val }),
 								})
