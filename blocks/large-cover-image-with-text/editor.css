@@ -1,0 +1,81 @@
+.cover-image-section {
+	width: 100%;
+	height: 70vh;
+	margin-bottom: 3em;
+	color: white !important;
+}
+
+.cover-image-section .inner-image-container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-position: center;
+	background-size: cover;
+}
+
+.cover-image-section .wrapper {
+	width: 100%;
+	height: 100%;
+}
+
+.cover-opacity {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 5;
+}
+.cover-image-section .text-container::before {
+  content: '';
+  position: absolute;
+  height: 0px;
+}
+
+.cover-image-section .cover-button {
+	max-width: 300px;
+	padding: 5px;
+	border: 1px solid black;
+	background-color: black;
+	color: white;
+	border-radius: 3px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.block-editor-url-input {
+	min-width: 300px !important;
+}
+
+.cover-image-section .text-container {
+	height: auto;
+	padding-top: 2em;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	z-index: 10;
+	min-width: 70%;
+	opacity: 1 !important;
+}
+
+.cover-image-section .text-container .block-editor-inner-blocks {
+	min-height: 100px;
+}
+
+.cover-image-section .block-editor-block-list__layout {
+	min-height: 100px;
+	text-align: center;
+}
+
+.cover-image-section .select-image-button {
+	margin-top: 10px;
+}
+
+.wp-block:has(.cover-image-section) {
+	max-width: unset;
+}
+
+.cover-image-section .max-width {
+	max-width: 840px;
+}

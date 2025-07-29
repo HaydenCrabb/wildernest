@@ -1,21 +1,11 @@
-/**
- * @wordpress/block-editor
- * @wordpress/blocks
- * @wordpress/element
- */
-
-console.log('Registering textured-text block…');
-
-//Check to ensure wp is loaded. 
-wp.domReady(function () {
-
+( function (blocks, element, blockEditor, components ) {
 	// actual block code. 
-	const { registerBlockType } = wp.blocks;
-	const { createElement } = wp.element;
-	const { MediaUpload, MediaUploadCheck, RichText } = wp.blockEditor;
-	const { Button } = wp.components;
+	const { registerBlockType } = blocks;
+	const { createElement: el, Fragment } = element
+	const { MediaUpload, MediaUploadCheck, RichText, InspectorControls, PanelColorSettings } = blockEditor;
+	const { Button, PanelBody } = components;
 
-	registerBlockType('hcsolutions/textured-text-section', {
+	blocks.registerBlockType('hcsolutions/textured-text-section', {
 		title: 'textured-text Section',
 		icon: {
 		  src: wp.element.createElement(
@@ -73,43 +63,72 @@ wp.domReady(function () {
 		},
 		category: 'layout',
 		attributes: {
-		  hoverText: { type: 'string', default: '' },
-		  leftImage: { type: 'object' },
-		  rightImage: { type: 'object' }
+		  headerText: { type: 'string', default: '' },
+		  bodyText: { type: 'string', default: '' },
+		  overlayColor: {type: 'string', default: '#494D3D'},
 		},
 		edit: function (props) {
-			try {
-			    const { attributes, setAttributes } = props;
+		    const { attributes, setAttributes } = props;
 
-			    return createElement(
-			      'div',
-			      { className: 'textured-text-section alignfull' },
-			      // Editable Text
-			      createElement(RichText, {
-			        tagName: 'div',
-			        className: 'header-text',
-			        value: attributes.headerText,
-			        onChange: (val) => setAttributes({ headerText: val }),
-			        placeholder: 'Add header text…',
-			      }),
-			      createElement(RichText, {
-			        tagName: 'div',
-			        className: 'body-text',
-			        value: attributes.bodyText,
-			        onChange: (val) => setAttributes({ bodyText: val }),
-			        placeholder: 'Add body text…',
-			      }),
-			    );
-			}
-			catch (e) {
-			  console.error('Edit function error:', e);
-			  return 'Block preview failed.';
-			}
-		  },
+		    const headerText = attributes.headerText ?? '';
+		    const bodyText = attributes.bodyText ?? '';
+		    const overlayColor = attributes.overlayColor ?? '#494D3D';
+
+		    return el(Fragment, null, 
+		    	el(InspectorControls, null,
+					el(PanelBody, { title: 'Overlay Settings', initialOpen: true },
+					),
+					el(PanelColorSettings, {
+						title: 'Overlay Color',
+						colorSettings: [{
+							label: 'Overlay Color',
+							value: overlayColor,
+							onChange: (color) => setAttributes({ overlayColor: color })
+						}]
+					})
+				),
+		    	el('div', { 
+		    		className: 'textured-text-section'
+		    	}, [
+		    		el('div', {
+						className: 'background-pattern',
+						style: {
+							backgroundImage: 'url("https://sld.tid.temporary.site/website_c268a004/wp-content/uploads/2025/07/background-pattern-smaller.webp")'
+						}
+					}, [
+						el('div', {
+							className: 'textured-overlay',
+							style: {
+								backgroundColor: overlayColor
+							}
+						}),
+						el('div', { 
+							className: 'textured-text-container max-width center-aligned'
+						}, [
+
+							el(RichText, {
+								tagName: 'h2',
+								className: 'header-text',
+								value: attributes.headerText,
+								onChange: (val) => setAttributes({ headerText: val }),
+								placeholder: 'Add Header…',
+							}),
+							el(RichText, {
+								tagName: 'div',
+								className: 'body-text',
+								value: attributes.bodyText,
+								onChange: (val) => setAttributes({ bodyText: val }),
+								placeholder: 'Add body paragraph...',
+							})
+						])
+					])
+		    	]),
+		   	);
+		},
 		save: function () {
 			return null; // server-rendered by PHP
 		}
 	});
 
 	//End actual block code. 
-});
+} )(window.wp.blocks, window.wp.element, window.wp.blockEditor, window.wp.components);

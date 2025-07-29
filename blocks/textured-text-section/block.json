@@ -1,13 +1,13 @@
 {
-  "apiVersion": 2,
+  "apiVersion": 3,
   "name": "hcsolutions/textured-text-section",
   "title": "textured-text Section",
   "category": "layout",
-  "description": "Two large images with optional text in-between",
+  "description": "A title and paragraph with text and optional button",
   "supports": {
     "html": false
   },
-  "editorScript": [ "file:./block-index.js", "wp-blocks", "wp-element", "wp-block-editor" ],
+  "editorScript": [ "file:./block-index.js"],
   "editorStyle": "file:./editor.css",
   "style": "file:./block-style.css",
   "render": "file:./textured-text-section.php"
