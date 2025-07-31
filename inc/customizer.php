@@ -36,6 +36,13 @@ function wildernest_customize_register( $wp_customize ) {
   ) );
 
 
+  $wp_customize->add_setting( 'front-page-icon' , array(
+        'transport'     => 'refresh',
+        'height'        => 300,
+        'width'        => 300,
+   ) );
+
+
   // Add Sections
   // Sections are viewed in the customizer
 
@@ -72,6 +79,14 @@ function wildernest_customize_register( $wp_customize ) {
       'section'     => 'more_footer_options',
       'type'        => 'text',
   ) );
+
+
+   $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'site-icon-control', array(
+        'label'       => __( 'Front Page Icon', 'wildernest' ),
+        'section'     => 'title_tagline',
+        'settings'    => 'front-page-icon',
+    )));
+
 }
 add_action('customize_register', 'wildernest_customize_register');
 
