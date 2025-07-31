@@ -22,10 +22,12 @@ $subheading = get_post_meta($post->ID, 'wildernest_subheading_setting', true);
 	<div class="scroll-indicator"><span class="roboto">Scroll</span> ––––––––</div>
 	<div class="cover-header-inner max-width" <?php echo $cover_inner_style ?>>
 		<div class="text-container">
-			<h1 class="heading"><?php echo get_the_title(); ?></h1>
-			<?php if ($subheading != ''): ?>
-				<h2 class="subheading"><?php echo $subheading; ?></h2>
-			<?php endif; ?>
+			<div class="heading-inner-containers">
+				<h1 class="heading"><?php echo get_the_title(); ?></h1>
+				<?php if ($subheading != ''): ?>
+					<h2 class="subheading"><?php echo $subheading; ?></h2>
+				<?php endif; ?>
+			</div>
 		</div>
 		<!-- Your inner content -->
 	</div>
