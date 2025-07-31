@@ -6,6 +6,7 @@ Version: 1.0
 
 :root {
 	--document-padding: 2em;
+	--document-width: 60rem;
 }
 
 @font-face {
@@ -48,7 +49,7 @@ h5 {
 }
 
 .max-width > * {
-	max-width: 60rem;
+	max-width: var(--document-width);
 	padding-left: var(--document-padding);
 	padding-right: var(--document-padding);
 }
@@ -72,10 +73,13 @@ h5 {
   overflow: hidden;
   height: 100%;
 }
-.post-inner > .content {
-	margin
+.over-header-post {
+	position: relative;
+	z-index: 1;
 }
-
+.post-inner:first-child {
+	padding-top: 5em;
+}
 
 
 /* Header */
@@ -352,10 +356,10 @@ h5 {
 /* Cover Header */
 .cover-header {
 	position: relative;
-	overflow: hidden;
+	/*overflow: hidden;*/
 	width: 100%;
 	height: 70vh;
-	z-index: 1;
+	z-index: 3;
 }
 
 .cover-header video {
@@ -369,6 +373,65 @@ h5 {
 .cover-header.front-page{
 	height: 105vh !important;
 }
+
+.cover-header.static-image {
+	position: relative;
+	overflow-y: visible;
+	z-index: 1;
+}
+
+.cover-header.static-image .cover-header-inner {
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: center;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.cover-header .cover-overlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background-color: #000;
+	opacity: 0.15;
+	z-index: 10;
+}
+.cover-header .scroll-indicator {
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	color: white;
+	z-index: 10;
+	transform: translate(-50%,-50%) rotate(90deg);;
+}
+
+.text-container {
+	position: relative;
+	text-align: center;
+	z-index: 12;
+}
+
+.cover-header .text-container .subheading {
+	font-family: "Venaissin";
+	line-height: 2rem;
+}
+
+.cover-header .text-container .heading {
+	font-size: 1.8rem;
+}
+
+.roboto {
+	font-size: 1rem;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+
 
 
 
@@ -399,6 +462,16 @@ h5 {
 	/* Footer */ 
 	#footer-info-email {
 		font-size: 2rem;
+	}
+
+	.cover-header .text-container .subheading {
+		    font-size: 1.6rem;
+    		line-height: 2.2rem;
+	}
+
+	.cover-header .text-container .heading {
+		font-size: 2rem;
+		margin-bottom: 0.4em;
 	}
 
 }
@@ -457,6 +530,11 @@ h5 {
 	  margin: 0 auto;
 	}
 
+	.cover-header .text-container .heading {
+		font-size: 2rem;
+		margin-bottom: 0em;
+	}
+
 }
 
 
@@ -476,4 +554,30 @@ h5 {
 		height: auto;
 	}
 
+	.cover-header .text-container .subheading {
+		    font-size: 2rem;
+    		line-height: 2.2rem;
+    		margin-top: 0.5em;
+	}
+
+	.cover-header .text-container .heading {
+		font-size: 2.3rem;
+	}
+
+
 }
+
+@media ( min-width: 1300px ) {
+
+	.cover-header .text-container .subheading {
+		    font-size: 2.3rem;
+    		line-height: 2.5rem;
+	}
+
+	.cover-header .text-container .heading {
+		font-size: 2.5rem;
+	}
+
+
+}
+

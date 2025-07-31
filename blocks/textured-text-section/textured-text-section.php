@@ -32,7 +32,7 @@ if ($header_text != '' || $body_text != '') :
           <?php
             if ($body_text != '') { ?>
               <div class="body-text-container">
-                <div class="body-text"><?php echo esc_html($body_text); ?></div>
+                <p class="body-text"><?php echo esc_html($body_text); ?></p>
               </div>
             <?php
             } 

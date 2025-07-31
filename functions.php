@@ -120,3 +120,37 @@ add_action('init', function () {
 
 
 
+/* Register Cover Header custom settings */
+
+function wildernest_register_subheading_meta() {
+	register_post_meta('page', 'wildernest_subheading_setting', array(
+		'show_in_rest' => true,
+		'single'       => true,
+		'type'         => 'string',
+		'auth_callback' => function() {
+			return current_user_can('edit_posts');
+		},
+	));
+}
+add_action('init', 'wildernest_register_subheading_meta');
+
+
+function wildernest_enqueue_editor_assets() {
+	wp_enqueue_script(
+		'wildernest-subheading-panel',
+		get_template_directory_uri() . '/assets/js/subheading-panel.js',
+		array('wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data'),
+		false,
+		true
+	);
+}
+add_action('enqueue_block_editor_assets', 'wildernest_enqueue_editor_assets');
+
+
+
+
+
+
+
+
+
