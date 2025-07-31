@@ -8,6 +8,9 @@
 *
 *
 */
+
+$post_inner_class = ''
+
 ?>
 
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
@@ -18,10 +21,11 @@
 		}
 		else {
 			get_template_part('template-parts/cover-header');
+			$post_inner_class = 'cover-header-post';
 		}
 	?>
 
-	<div class="post-inner">
+	<div class="post-inner <?php echo $post_inner_class; ?>">
 		<div class="content max-width center-aligned">
 			<?php
 			the_content( __( 'Continue reading', 'twentytwenty' ) );

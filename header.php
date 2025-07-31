@@ -22,6 +22,9 @@
 
 		<!-- Add Meta Data + Structured data here -->
 
+
+		<!-- Include the roboto font -->
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 		<?php wp_head(); ?>
 
 	</head>
