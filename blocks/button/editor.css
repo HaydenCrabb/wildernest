@@ -1,0 +1,8 @@
+.hcsolutions-button {
+	color: black;
+	border: 1px solid black;
+}
+
+.hcsolutions-button::before {
+	display: none;
+}

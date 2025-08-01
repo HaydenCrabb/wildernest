@@ -34,7 +34,7 @@ $buttonUrl = esc_url($attributes['buttonUrl']) ?? '';
     <?php endif; ?>
     <?php if ($buttonText != '' && $buttonUrl != '') : ?>
       <div class="button-container">
-        <a class="cover-header-button button" href="<?php echo $buttonUrl; ?>"><?php echo $buttonText; ?></a>
+        <a class="hcsolutions-button" href="<?php echo $buttonUrl; ?>"><span><?php echo $buttonText; ?></span></a>
       </div>
     <?php endif; ?>
   </div>

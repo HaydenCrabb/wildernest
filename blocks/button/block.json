@@ -1,0 +1,25 @@
+{
+  "apiVersion": 3,
+  "name": "hcsolutions/button",
+  "title": "Wildernest Button",
+  "category": "layout",
+  "description": "A stylish button",
+  "keywords": ["button", "link"],
+  "supports": {
+    "html": false
+  },
+  "editorScript": "file:./block-index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./block-style.css",
+  "render": "file:./button.php",
+  "attributes": {
+    "buttonUrl": {
+      "type": "string",
+      "default": null
+    },
+    "buttonText": {
+      "type": "string",
+      "default": null
+    }
+  }
+}
