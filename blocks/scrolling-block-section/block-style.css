@@ -1,0 +1,78 @@
+.scrolling-block-section {
+	position: relative;
+}
+
+.scrolling-block-section .background-pattern {
+	position: relative;
+	padding-top: 6em;
+	padding-bottom: 5em;
+	padding-left: 3em;
+	padding-right: 3em;
+	background-size: cover;
+	background-position: center;
+}
+
+.scrolling-block-section .scrolling-block-container {
+	position: relative;
+	z-index: 10;
+
+}
+
+.scrolling-block-section .header-text {
+	text-align: center;
+	font-size: 1.5rem;
+}
+
+.scrolling-block-section .gold-band {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 25px;
+	background-image: linear-gradient(to left, #B5811E,#C38A20,#845F19);
+	opacity: 0.95;
+}
+
+.scroll-container {
+	overflow: auto;
+	white-space: nowrap;
+	padding: 10px;
+}
+
+.test-block {
+	height: 25px;
+	width: 25px;
+	background-color: red;
+	padding: 10px;
+}
+
+
+@media ( min-width: 480px ) {
+
+	.scrolling-block-section .header-text {
+		font-size: 1.8rem;
+	}
+
+}
+
+
+@media ( min-width: 600px ) {
+
+	.scrolling-block-section .header-text {
+		font-size: 2rem;
+	}
+
+
+}
+
+/* Breakpoint from mobile to desktop */
+@media ( min-width: 782px ) {
+
+
+}
+
+
+@media ( min-width: 1100px ) {
+
+
+}
