@@ -116,6 +116,7 @@ add_action('init', function () {
 	register_block_type(__DIR__ . '/blocks/large-cover-image-with-text');
 	register_block_type(__DIR__ . '/blocks/side-by-side-section');
 	register_block_type(__DIR__ . '/blocks/textured-text-section');
+	register_block_type(__DIR__ . '/blocks/scrolling-block-section');
 });
 
 
