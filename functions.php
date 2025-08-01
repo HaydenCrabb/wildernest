@@ -117,6 +117,7 @@ add_action('init', function () {
 	register_block_type(__DIR__ . '/blocks/side-by-side-section');
 	register_block_type(__DIR__ . '/blocks/textured-text-section');
 	register_block_type(__DIR__ . '/blocks/scrolling-block-section');
+	register_block_type(__DIR__ . '/blocks/button');
 });
 
 
