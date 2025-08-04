@@ -37,21 +37,26 @@ console.log("Registering cover Image");
 
 		},
 			edit: function ({ attributes, setAttributes }) {
-			const background = attributes.background_image;
+			var background = attributes.background_image;
 			const overlayColor = attributes.overlay_color ?? '#000000';
 			const overlayOpacity = attributes.overlay_opacity ?? 0.15;
 
 			var hasBackground = !!attributes.background_image;
+			var background_url = '';
+
+			if (hasBackground) {
+				background_url = background.url;
+			}
 
 
-			function renderBackgroundPreview(open, background, overlayOpacity, overlayColor) {
+			function renderBackgroundPreview(open, background_url, overlayOpacity, overlayColor) {
 				return el('div', {
 					className: 'wrapper',
 				}, [
 					el('div', {
 						className: 'inner-image-container',
 						style: {
-							backgroundImage: `url("${background.url}")`
+							backgroundImage: `url("${background_url}")`
 						}
 					}, [
 						el('div', {
@@ -76,7 +81,7 @@ console.log("Registering cover Image");
 						        className: 'cover-paragraph',
 						        value: attributes.paragraph,
 						        onChange: (val) => setAttributes({ paragraph: val }),
-						        placeholder: 'Add paragraph text…',
+						        placeholder: 'Add paragraph text… or leave blank for no text.',
 						      }),
 							el('div', {
 								className: 'cover-button',
@@ -141,7 +146,7 @@ console.log("Registering cover Image");
 							allowedTypes: ['image'],
 							value: attributes.background_image && attributes.background_image.id,
 							render: function ({ open }) {
-								return renderBackgroundPreview(open, background, overlayOpacity, overlayColor);
+								return renderBackgroundPreview(open, background_url, overlayOpacity, overlayColor);
 							}
 						})
 					)

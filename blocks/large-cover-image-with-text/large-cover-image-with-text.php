@@ -21,21 +21,23 @@ $buttonUrl = esc_url($attributes['buttonUrl']) ?? '';
 
 <div class="cover-image-section alignfull" style="background-image: url('<?php echo $background_url; ?>');">
   <div class="cover-image-section-cover" style="background-color: <?php echo $overlay_color; ?>; opacity: <?php echo $overlay_opacity; ?>;"></div>
-  <div class="text-container">
-    <?php if ($header != '') : ?>
-      <div class="header-container">
-        <h2 class="header"><?php echo $header; ?></h2>
-      </div>
-    <?php endif; ?>
-    <?php if ($paragraph != '') : ?>
-      <div class="cover-paragraph-container">
-        <p class="cover-paragraph"><?php echo $paragraph; ?></p>
-      </div>
-    <?php endif; ?>
-    <?php if ($buttonText != '' && $buttonUrl != '') : ?>
-      <div class="button-container">
-        <a class="hcsolutions-button" href="<?php echo $buttonUrl; ?>"><span><?php echo $buttonText; ?></span></a>
-      </div>
-    <?php endif; ?>
-  </div>
+  <?php if ($header != '' || $paragraph != ''): ?>
+    <div class="text-container">
+      <?php if ($header != '') : ?>
+        <div class="header-container">
+          <h2 class="header"><?php echo $header; ?></h2>
+        </div>
+      <?php endif; ?>
+      <?php if ($paragraph != '') : ?>
+        <div class="cover-paragraph-container">
+          <p class="cover-paragraph"><?php echo $paragraph; ?></p>
+        </div>
+      <?php endif; ?>
+      <?php if ($buttonText != '' && $buttonUrl != '') : ?>
+        <div class="button-container">
+          <a class="hcsolutions-button" href="<?php echo $buttonUrl; ?>"><span><?php echo $buttonText; ?></span></a>
+        </div>
+      <?php endif; ?>
+    </div>
+  <?php endif; ?>
 </div>
