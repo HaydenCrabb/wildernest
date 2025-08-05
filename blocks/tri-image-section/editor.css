@@ -1,0 +1,15 @@
+.tri-image-section .secondary-images-container:has(.components-button) {
+	flex: 0 0 50%;
+	align-items: center;
+
+}
+
+
+.tri-image-section .secondary-images-container .components-button {
+	max-width: 14rem;
+	width: fit-content;
+}
+
+.tri-image-section:has(.components-button) {
+	height: 40vh;
+}

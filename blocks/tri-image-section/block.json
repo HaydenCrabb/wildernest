@@ -1,0 +1,28 @@
+{
+  "apiVersion": 3,
+  "name": "hcsolutions/tri-image-section",
+  "title": "Tri Image Section",
+  "category": "layout",
+  "description": "Three Images taking up a full section",
+  "supports": {
+    "html": false
+  },
+  "editorScript": [ "file:./block-index.js", "wp-blocks", "wp-element", "wp-block-editor" ],
+  "editorStyle": "file:./editor.css",
+  "style": "file:./block-style.css",
+  "render": "file:./tri-image-section.php",
+  "attributes": {
+    "mainImage": {
+      "type": "object",
+      "default": null
+    },
+    "topRight": {
+      "type": "object",
+      "default": null
+    },
+    "bottomRight": {
+      "type": "object",
+      "default": null
+    }
+  }
+}

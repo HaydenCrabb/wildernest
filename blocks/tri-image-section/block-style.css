@@ -1,0 +1,80 @@
+.tri-image-section {
+	height: 90vh;
+	background-color: white;
+	padding: 5px 0px 5px 0px;
+
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	gap: 5px;
+}
+
+.tri-image-section .main-image-container {
+	flex: 0 0 65%;
+	height: 100%;
+}
+
+.tri-image-section .secondary-images-container {
+	flex: 1;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 5px;
+}
+
+.tri-image-section .top-right-container,
+.tri-image-section .bottom-right-container {
+	flex: 1;
+	width: 100%;
+}
+
+.tri-image-section .image {
+	background-size: cover;
+	background-position: center;
+}
+
+
+@media ( min-width: 480px ) {
+	.tri-image-section {
+		padding: 10px 0px 10px 0px;
+		gap: 10px;
+	}
+	.tri-image-section .secondary-images-container {
+		gap: 10px;
+	}
+
+}
+
+
+/* Breakpoint from mobile to desktop */
+@media ( min-width: 782px ) {
+	.tri-image-section {
+		padding: 15px 0px 15px 0px;
+		gap: 15px;
+	}
+	.tri-image-section .secondary-images-container {
+		gap: 15px;
+	}
+
+}
+
+@media ( min-width: 1100px ) {
+	.tri-image-section {
+		padding: 20px 0px 20px 0px;
+		gap: 20px;
+	}
+	.tri-image-section .secondary-images-container {
+		gap: 20px;
+	}
+}
+
+@media ( min-width: 1300px ) {
+	.tri-image-section {
+		padding: 30px 0px 30px 0px;
+		gap: 30px;
+	}
+	.tri-image-section .secondary-images-container {
+		gap: 30px;
+	}
+}
