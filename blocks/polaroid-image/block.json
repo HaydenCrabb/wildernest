@@ -1,0 +1,28 @@
+{
+  "apiVersion": 3,
+  "name": "hcsolutions/polaroid-image",
+  "title": "Polaroid Image Section",
+  "category": "layout",
+  "description": "One Large Image with a header",
+  "supports": {
+    "html": false
+  },
+  "editorScript": [ "file:./block-index.js", "wp-blocks", "wp-element", "wp-block-editor" ],
+  "editorStyle": "file:./editor.css",
+  "style": "file:./block-style.css",
+  "render": "file:./polaroid-image.php",
+  "attributes": {
+    "mainImage": {
+      "type": "object",
+      "default": null
+    },
+    "mainHeading": {
+      "type": "string",
+      "default": ""
+    },
+    "subHeading": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}
