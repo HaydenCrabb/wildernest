@@ -1,3 +1,16 @@
 .scrolling-block-section {
 	color: white;
 }
+
+.scrolling-block-container {
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+.scrolling-block-container > .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
+	width: auto !important;
+    max-width: 200px; /* set a fixed or max width to keep things compact */
+    display: inline-block !important;
+    margin-right: 10px;
+    vertical-align: top;
+}
