@@ -3,7 +3,7 @@
   "name": "hcsolutions/scrolling-block-section",
   "title": "scrolling-block Section",
   "category": "layout",
-  "description": "A title and paragraph with text and optional button",
+  "description": "scrolling blocks",
   "supports": {
     "html": false
   },

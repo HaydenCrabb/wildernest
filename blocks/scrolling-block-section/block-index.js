@@ -2,9 +2,8 @@
 	// actual block code. 
 	const { registerBlockType } = blocks;
 	const { createElement: el, Fragment } = element
-	const { MediaUpload, MediaUploadCheck, RichText, InspectorControls, PanelColorSettings } = blockEditor;
+	const { MediaUpload, MediaUploadCheck, RichText, InspectorControls, PanelColorSettings, InnerBlocks } = blockEditor;
 	const { Button, PanelBody } = components;
-	const InnerBlocks = blockEditor.InnerBlocks;
 
 	blocks.registerBlockType('hcsolutions/scrolling-block-section', {
 		title: 'scrolling-block Section',
@@ -71,63 +70,57 @@
 		edit: function (props) {
 		    const { attributes, setAttributes } = props;
 
-		    const headerText = attributes.headerText ?? '';
-		    const bodyText = attributes.bodyText ?? '';
-		    const overlayColor = attributes.overlayColor ?? '#494D3D';
+		    
 
 		    return el(Fragment, null, 
 		    	el(InspectorControls, null,
-					el(PanelBody, { title: 'Overlay Settings', initialOpen: true },
-					),
-					el(PanelColorSettings, {
-						title: 'Overlay Color',
-						colorSettings: [{
-							label: 'Overlay Color',
-							value: overlayColor,
-							onChange: (color) => setAttributes({ overlayColor: color })
-						}]
-					})
+					// el(PanelBody, { title: 'Overlay Settings', initialOpen: true },
+					// ),
+					// el(PanelColorSettings, {
+					// 	title: 'Overlay Color',
+					// 	colorSettings: [{
+					// 		label: 'Overlay Color',
+					// 		value: overlayColor,
+					// 		onChange: (color) => setAttributes({ overlayColor: color })
+					// 	}]
+					// })
 				),
 		    	el('div', { 
-		    		className: 'scrolling-block-section'
+		    		className: 'scrolling-block-section',
+					
 		    	}, [
 		    		el('div', {
 						className: 'background-pattern',
 						style: {
-							backgroundImage: 'url("https://sld.tid.temporary.site/website_c268a004/wp-content/uploads/2025/07/background-pattern-smaller.webp")'
+							backgroundColor: '#483e30'
 						}
 					}, [
-						el('div', {
-							className: 'textured-overlay',
-							style: {
-								backgroundColor: overlayColor
-							}
-						}),
 						el('div', { 
-							className: 'scrolling-block-container max-width center-aligned'
+							className: 'scrolling-block-container max-width center-aligned',
+							style: {backgroundColor: '#483e30'}
 						}, [
-
-							el(RichText, {
-								tagName: 'h2',
-								className: 'header-text',
-								value: attributes.headerText,
-								onChange: (val) => setAttributes({ headerText: val }),
-								placeholder: 'Add Header…',
-							}),
-							el(RichText, {
-								tagName: 'div',
-								className: 'body-text',
-								value: attributes.bodyText,
-								onChange: (val) => setAttributes({ bodyText: val }),
-								placeholder: 'Add body paragraph...',
+							el(InnerBlocks, {
+								allowedBlocks: ['core/paragraph', 'core/heading', 'core/image'],
+								template: [
+								],
+								templateLock: false,
 							})
+
 						])
 					])
 		    	]),
+				
 		   	);
 		},
 		save: function () {
-			return null; // server-rendered by PHP
+			return el('div', { className: 'scrolling-block-section' },
+                el('div', { className: 'background-pattern' },
+                    el('div', { className: 'scrolling-block-container max-width center-aligned' },
+                        // ✅ Ensures child blocks get saved
+                        el(InnerBlocks.Content, null)
+                    )
+                )
+            );
 		}
 	});
 
