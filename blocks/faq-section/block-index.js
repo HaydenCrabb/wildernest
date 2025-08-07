@@ -5,8 +5,9 @@
 	const { MediaUpload, MediaUploadCheck, RichText, InspectorControls, PanelColorSettings, InnerBlocks } = blockEditor;
 	const { Button, PanelBody } = components;
 
-	blocks.registerBlockType('hcsolutions/textured-text-section', {
-		title: 'textured-text Section',
+	blocks.registerBlockType('hcsolutions/faq-section', {
+		title: 'Frequently Asked Questions',
+		keywords: ['Frequently', 'Asked', 'Questions', 'FAQ'],
 		icon: {
 		  src: wp.element.createElement(
 		    'svg',
@@ -63,67 +64,74 @@
 		},
 		category: 'layout',
 		attributes: {
-		  headerText: { type: 'string', default: '' },
-		  bodyText: { type: 'string', default: '' },
-		  overlayColor: {type: 'string', default: '#494D3D'},
+			faqItems: {
+				type: 'array',
+				default: []
+			}
 		},
+
 		edit: function (props) {
-		    const { attributes, setAttributes } = props;
+			const { attributes, setAttributes } = props;
+			const { faqItems = [] } = attributes;
 
-		    const headerText = attributes.headerText ?? '';
-		    const bodyText = attributes.bodyText ?? '';
-		    const overlayColor = attributes.overlayColor ?? '#494D3D';
+			function updateFAQ(index, field, value) {
+				const updatedItems = [...faqItems];
+				updatedItems[index][field] = value;
+				setAttributes({ faqItems: updatedItems });
+			}
 
-		    return el(Fragment, null, 
-		    	el(InspectorControls, null,
-					el(PanelBody, { title: 'Overlay Settings', initialOpen: true },
-					),
-					el(PanelColorSettings, {
-						title: 'Overlay Color',
-						colorSettings: [{
-							label: 'Overlay Color',
-							value: overlayColor,
-							onChange: (color) => setAttributes({ overlayColor: color })
-						}]
-					})
-				),
-		    	el('div', { 
-		    		className: 'textured-text-section'
-		    	}, [
-		    		el('div', {
-						className: 'background-pattern',
-						style: {
-							backgroundImage: 'url("https://sld.tid.temporary.site/website_c268a004/wp-content/uploads/2025/07/background-pattern-smaller.webp")'
-						}
-					}, [
-						el('div', {
-							className: 'textured-overlay',
-							style: {
-								backgroundColor: overlayColor
-							}
-						}),
-						el('div', { 
-							className: 'textured-text-container max-width center-aligned'
-						}, [
+			function addFAQ() {
+				setAttributes({
+					faqItems: [...faqItems, { question: '', answer: '' }]
+				});
+			}
 
+			function removeFAQ(index) {
+				const updatedItems = [...faqItems];
+				updatedItems.splice(index, 1);
+				setAttributes({ faqItems: updatedItems });
+			}
+
+			return el('div', { className: 'faq-block' }, 
+				el('div', {
+					className: "faq-wrapper",
+				}, [
+					el('h3', null, 'FAQs'),
+
+					...faqItems.map((item, index) =>
+						el('div', { className: 'faq-item', key: index }, [
+							el('div', {
+								className: "faq-header",
+							}, 
+								el(RichText, {
+									tagName: 'h4',
+									className: 'faq-question',
+									placeholder: 'Enter question...',
+									value: item.question,
+									onChange: (val) => updateFAQ(index, 'question', val)
+								})
+							),
 							el(RichText, {
-								tagName: 'h2',
-								className: 'header-text',
-								value: attributes.headerText,
-								onChange: (val) => setAttributes({ headerText: val }),
-								placeholder: 'Add Header…',
+								tagName: 'p',
+								className: 'faq-answer',
+								placeholder: 'Enter answer...',
+								value: item.answer,
+								onChange: (val) => updateFAQ(index, 'answer', val)
 							}),
-							el(RichText, {
-								tagName: 'div',
-								className: 'body-text',
-								value: attributes.bodyText,
-								onChange: (val) => setAttributes({ bodyText: val }),
-								placeholder: 'Add body paragraph...',
-							})
+							el(Button, {
+								isDestructive: true,
+								className: 'removal-button',
+								onClick: () => removeFAQ(index)
+							}, 'X')
 						])
-					])
-		    	]),
-		   	);
+					),
+
+					el(Button, {
+						isPrimary: true,
+						onClick: addFAQ
+					}, 'Add FAQ')
+				])
+			);
 		},
 		save: function () {
 			return null; // server-rendered by PHP
