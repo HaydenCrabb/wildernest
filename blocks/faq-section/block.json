@@ -1,0 +1,21 @@
+{
+  "apiVersion": 3,
+  "name": "hcsolutions/faq-section",
+  "title": "Frequently Asked Questions",
+  "category": "layout",
+  "description": "Frequently Asked Questions Section",
+  "supports": {
+    "html": false
+  },
+  "editorScript": [ "file:./block-index.js"],
+  "editorStyle": "file:./editor.css",
+  "style": "file:./block-style.css",
+  "render": "file:./faq-section.php",
+  "script": "file:./faq-frontend.js",
+  "attributes": {
+    "faqItems": {
+      "type": "array",
+      "default": []
+    }
+  }
+}

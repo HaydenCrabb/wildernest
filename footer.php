@@ -16,7 +16,7 @@
 			<div class="footer-inner max-width center-aligned">
 				<div class="smaller-inner-footer">
 
-					<div class="wp-block-columns footer-columns">
+					<div class="footer-columns">
 						<div id="footer-logo-column" class="wp-block-column">
 							<div class="footer-logo-inner">
 								<img decoding="async" src="<?php echo get_theme_mod('footer_site_logo'); ?>" alt="" class="wp-image-64 footer_site_logo" srcset="<?php echo get_theme_mod('footer_site_logo'); ?> 300w, <?php echo get_theme_mod('footer_site_logo'); ?> 768w, <?php echo get_theme_mod('footer_site_logo'); ?> 800w" sizes="(max-width: 300px) 100vw, 300px">
