@@ -93,6 +93,13 @@ function wildernest_menus() {
 add_action( 'init', 'wildernest_menus' );
 
 
+// Enables format support in the block editors
+add_action('enqueue_block_editor_assets', function () {
+	wp_enqueue_script('wp-format-library');
+	wp_enqueue_style('wp-format-library');
+});
+
+
 // Register the stylesheet.
 
 function wildernest_enqueue_styles() {
@@ -122,6 +129,7 @@ add_action('init', function () {
 	register_block_type(__DIR__ . '/blocks/tri-image-section');
 	register_block_type(__DIR__ . '/blocks/faq-section');
 	register_block_type(__DIR__ . '/blocks/gallery-scroller');
+	register_block_type(__DIR__ . '/blocks/floating-banner');
 
 });
 

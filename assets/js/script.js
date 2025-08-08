@@ -1,3 +1,6 @@
+gsap.registerPlugin(ScrollTrigger);
+
+
 function closeModal(button) {
 	//if not triggered by button, re-enable scroll
 	if (!button) {

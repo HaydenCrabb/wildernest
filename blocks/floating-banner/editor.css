@@ -1,0 +1,26 @@
+.floating-banner .components-button {
+	background-color: white;
+}
+
+.floating-banner .float-section {
+	color: white;
+	left: 0px;
+	width: 100%;
+}
+
+.editor-styles-wrapper .components-popover { z-index: 999999 !important; }
+.cover-image-section .float-section, 
+.cover-image-section .button-text { pointer-events: auto; }
+
+.editor-styles-wrapper .floating-banner,
+.editor-styles-wrapper .floating-banner * {
+	transform: none !important;
+	filter: none !important;
+}
+
+.editor-styles-wrapper .cover-image-section,
+.editor-styles-wrapper .cover-image-section * {
+	overflow: visible !important; /* temp test */
+	user-select: text !important;
+	pointer-events: auto !important;
+}

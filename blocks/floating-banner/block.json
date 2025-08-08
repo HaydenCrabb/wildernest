@@ -1,0 +1,37 @@
+{
+  "apiVersion": 3,
+  "name": "hcsolutions/floating-banner",
+  "title": "Floating Banner",
+  "category": "layout",
+  "description": "A large image with a floating banner in front",
+  "supports": {
+    "html": false
+  },
+  "editorScript": "file:./block-index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./block-style.css",
+  "render": "file:./floating-banner.php",
+  "script": "file:./floating.js",
+  "attributes": {
+    "background_image": {
+      "type": "object",
+      "default": null
+    },
+    "header": {
+      "type": "string",
+      "default": ""
+    },
+    "subHeading": {
+      "type": "string",
+      "default": ""
+    },
+    "buttonText": {
+      "type": "string",
+      "default": ""
+    },
+    "buttonUrl": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}
