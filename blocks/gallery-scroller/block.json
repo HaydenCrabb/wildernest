@@ -1,0 +1,25 @@
+{
+  "apiVersion": 3,
+  "name": "hcsolutions/gallery-scroller",
+  "title": "Gallery",
+  "category": "layout",
+  "description": "Photo Gallery for viewing multiple photos",
+  "supports": {
+    "html": false
+  },
+  "editorScript": [ "file:./block-index.js", "wp-blocks", "wp-element", "wp-block-editor" ],
+  "editorStyle": "file:./editor.css",
+  "style": "file:./block-style.css",
+  "render": "file:./gallery-scroller.php",
+  "script": "file:./gallery.js",
+  "attributes": {
+    "images": {
+      "type": "array",
+      "default": []
+    },
+    "overlayText": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}

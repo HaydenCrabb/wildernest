@@ -121,6 +121,7 @@ add_action('init', function () {
 	register_block_type(__DIR__ . '/blocks/polaroid-image');
 	register_block_type(__DIR__ . '/blocks/tri-image-section');
 	register_block_type(__DIR__ . '/blocks/faq-section');
+	register_block_type(__DIR__ . '/blocks/gallery-scroller');
 
 });
 

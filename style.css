@@ -12,7 +12,7 @@ Version: 1.0
 @font-face {
 	font-family: "Bhanbh";
 	font-style: normal;
-	src: url("./assets/fonts/Bhanbh-Regular.otf");
+	src: url("./assets/fonts/BhanbhFixed2-Regular.otf?v=4");
 }
 
 @font-face {
@@ -46,6 +46,11 @@ h3,
 h4,
 h5 {
 	font-family: "Bhanbh";
+	font-weight: 600;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
 }
 
 .max-width > * {
