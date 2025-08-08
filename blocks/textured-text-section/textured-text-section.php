@@ -11,12 +11,13 @@ $header_text  = $attributes['headerText'] ?? '';
 $body_text  = $attributes['bodyText'] ?? '';
 $overlay_color = $attributes['overlayColor'] ?? '#494D3D';
 
+$background_url = get_site_url() . '/wp-content/uploads/2025/07/background-pattern-smaller.webp';
 
 // Only render the block if we have some content.
 if ($header_text != '' || $body_text != '') :
 ?>
   <div class="textured-text-section alignfull">
-    <div class="background-pattern" style="background-image: url('https://sld.tid.temporary.site/website_c268a004/wp-content/uploads/2025/07/background-pattern-smaller.webp')">
+    <div class="background-pattern" style="background-image: url(<?php echo $background_url ?>)">
       <div class="gold-band"></div>
       <div class="textured-overlay" style="background-color: <?php echo $overlay_color ?>;">
       </div>
