@@ -9,6 +9,5 @@
   },
   "editorScript": [ "file:./block-index.js"],
   "editorStyle": "file:./editor.css",
-  "style": "file:./block-style.css",
-  "render": "file:./textured-text-section.php"
+  "style": "file:./block-style.css"
 }
