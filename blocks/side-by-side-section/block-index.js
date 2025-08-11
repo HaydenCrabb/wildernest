@@ -99,14 +99,14 @@ console.log('Registering side-by-side block…');
 			            render: ({ open }) =>
 			              hasLeftImage
 			                ? createElement('div', {
-			                	onClick: open, isSecondary: true,
+			                	onClick: open, issecondary: "true",
 			                    className: 'inner-image-container',
 			                    style: {
 			                      backgroundImage: 'url("' + attributes.leftImage.url + '")',
 			                    }
 			                  })
 			                : createElement(Button, { 
-			                	onClick: open, isSecondary: true,
+			                	onClick: open, issecondary: "true",
 			                	className: 'select-image-button' 
 			                }, 'Select Left Image')
 			          })
@@ -123,14 +123,14 @@ console.log('Registering side-by-side block…');
 			            render: ({ open }) =>
 			              hasRightImage
 			                ? createElement('div', {
-			                	onClick: open, isSecondary: true,
+			                	onClick: open, issecondary: "true",
 			                    className: 'inner-image-container',
 			                    style: {
 			                      backgroundImage: 'url("' + attributes.rightImage.url + '")',
 			                    }
 			                  })
 			                : createElement(Button, { 
-			                	onClick: open, isSecondary: true,
+			                	onClick: open, issecondary: "true",
 			                	className: 'select-image-button' 
 			                }, 'Select Right Image')
 			          })

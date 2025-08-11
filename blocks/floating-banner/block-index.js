@@ -44,7 +44,7 @@
 						backgroundImage: `url("${background_url}")`
 					}
 				}, [
-					el(MediaUploadCheck, null,
+					el(MediaUploadCheck, { key: 'uploader' },
 						el(MediaUpload, {
 							onSelect: function (media) {
 								setAttributes({ background_image: media });
@@ -62,11 +62,13 @@
 					),
 					el('div', {
 						className: "float-section",
+						key: 'float',
 					}, [
-						el('div', { className: "gold-band"}),
+						el('div', { className: "gold-band", key: 'gold'}),
 						el(RichText, {
 					        tagName: 'h3',
 					        className: 'header',
+					        key: 'header',
 					        value: attributes.header,
 					        onChange: (val) => setAttributes({ header: val }),
 					        placeholder: 'Add Header text…',
@@ -74,6 +76,7 @@
 						el(RichText, {
 					        tagName: 'h4',
 					        className: 'floating-subheading',
+					        key: 'subheader',
 					        value: attributes.subHeading,
 					        onChange: (val) => setAttributes({ subHeading: val }),
 					        placeholder: 'Add subHeading text…',
@@ -81,6 +84,7 @@
 						el(RichText, {
 					        tagName: 'p',
 					        className: 'button-text',
+					        key: 'button',
 					        value: attributes.buttonText,
 					        onChange: (val) => setAttributes({ buttonText: val }),
 					        placeholder: 'Add button text…',

@@ -1,26 +1,26 @@
-(function(wp) {
+(function (wp) {
 	const { registerPlugin } = wp.plugins;
-	const { PluginDocumentSettingPanel } = wp.editor;
+	// Prefer wp.editor (new), fall back to wp.editPost (old).
+	const PluginDocumentSettingPanel =
+		(wp.editor && wp.editor.PluginDocumentSettingPanel) ||
+		(wp.editPost && wp.editPost.PluginDocumentSettingPanel);
+
 	const { TextControl } = wp.components;
 	const { useSelect, useDispatch } = wp.data;
 	const { createElement: el } = wp.element;
 
-	const SubheadingPanel = () => {
-		const meta = useSelect(select =>
-			select('core/editor').getEditedPostAttribute('meta')
-		);
+	const SubheadingPanel = function () {
+		const meta = useSelect(function (select) {
+			return select('core/editor').getEditedPostAttribute('meta') || {};
+		}, []);
 
-		const postType = useSelect(select =>
-			select('core/editor').getCurrentPostType()
-		);
+		const postType = useSelect(function (select) {
+			return select('core/editor').getCurrentPostType();
+		}, []);
 
-		const postId = useSelect(select =>
-			select('core/editor').getCurrentPostId()
-		);
+		const { editPost } = useDispatch('core/editor');
 
-		const { editor } = useDispatch('core/editor');
-
-		if (postType !== 'page') return null;
+		if (!PluginDocumentSettingPanel || postType !== 'page') return null;
 
 		return el(
 			PluginDocumentSettingPanel,
@@ -31,10 +31,14 @@
 			},
 			el(TextControl, {
 				label: 'Page Subheading',
-				value: meta?.wildernest_subheading_setting || '',
-				onChange: (value) =>
-					editor({ meta: { ...meta, wildernest_subheading_setting: value } }),
+				value: meta.wildernest_subheading_setting || '',
+				onChange: function (value) {
+					editPost({
+						meta: Object.assign({}, meta, { wildernest_subheading_setting: value })
+					});
+				},
 				__next40pxDefaultSize: true,
+				__nextHasNoMarginBottom: true
 			})
 		);
 	};
@@ -44,3 +48,5 @@
 		icon: null
 	});
 })(window.wp);
+
+

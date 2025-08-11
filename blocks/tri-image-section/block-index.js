@@ -75,18 +75,21 @@
 		    return el(Fragment, null, [
 			    el('div', {
 			    	className: "tri-image-section",
+			    	key: 'section-container',
 			    }, [
-			    	el(MediaUploadCheck, null,
+			    	el(MediaUploadCheck, { key: 'media-uploader-check-main' },
 						el(MediaUpload, {
 							onSelect: function (media) {
 								setAttributes({ mainImage: media });
 							},
 							allowedTypes: ['image'],
+							key: 'media-uploader-main',
 							value: attributes.mainImage && attributes.mainImage.id,
 							render: function ({ open }) {
 								return attributes.mainImage?.url
 									? el('div', {
 										className: "main-image-container image",
+										key: 'main-image-container',
 										style: {
 											backgroundImage: `url("${attributes.mainImage.url}")`
 										},
@@ -96,6 +99,7 @@
 									})
 									: el(Button, {
 										onClick: open,
+										key: 'open-button',
 										variant: 'primary',
 										isSecondary: true
 									}, 'Select Main Image');
@@ -104,18 +108,21 @@
 					),
 			    	el('div', {
 			    		className: "secondary-images-container",
+			    		key: 'secondary-images-container',
 			    	}, [
-			    		el(MediaUploadCheck, null,
+			    		el(MediaUploadCheck, { key: 'media-uploader-check-top-right' },
 							el(MediaUpload, {
 								onSelect: function (media) {
 									setAttributes({ topRight: media });
 								},
 								allowedTypes: ['image'],
+								key: 'media-uploader-top-right',
 								value: attributes.topRight && attributes.topRight.id,
 								render: function ({ open }) {
 									return attributes.topRight?.url
 										? el('div', {
 											className: "top-right-container image",
+											key: 'top-right',
 											style: {
 												backgroundImage: `url("${attributes.topRight.url}")`
 											},
@@ -125,23 +132,26 @@
 										})
 										: el(Button, {
 											onClick: open,
+											key: 'top-right-button',
 											variant: 'primary',
 											isSecondary: true
 										}, 'Select Top Right Image');
 								}
 							})
 						),
-						el(MediaUploadCheck, null,
+						el(MediaUploadCheck, { key: 'media-uploader-bottom-right' },
 							el(MediaUpload, {
 								onSelect: function (media) {
 									setAttributes({ bottomRight: media });
 								},
 								allowedTypes: ['image'],
+								key: 'media-uploader-bottom-right',
 								value: attributes.bottomRight && attributes.bottomRight.id,
 								render: function ({ open }) {
 									return attributes.bottomRight?.url
 										? el('div', {
 											className: "bottom-right-container image",
+											key: 'bottom-right-image',
 											style: {
 												backgroundImage: `url("${attributes.bottomRight.url}")`
 											},
@@ -151,6 +161,7 @@
 										})
 										: el(Button, {
 											onClick: open,
+											key: 'bottom-right-button',
 											variant: 'primary',
 											isSecondary: true
 										}, 'Select Bottom Right Image');

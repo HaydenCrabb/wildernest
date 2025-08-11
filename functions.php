@@ -130,6 +130,7 @@ add_action('init', function () {
 	register_block_type(__DIR__ . '/blocks/faq-section');
 	register_block_type(__DIR__ . '/blocks/gallery-scroller');
 	register_block_type(__DIR__ . '/blocks/floating-banner');
+	register_block_type(__DIR__ . '/blocks/numbers-section');
 
 });
 
@@ -154,7 +155,7 @@ function wildernest_enqueue_editor_assets() {
 	wp_enqueue_script(
 		'wildernest-subheading-panel',
 		get_template_directory_uri() . '/assets/js/subheading-panel.js',
-		array('wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data'),
+		array('wp-plugins', 'wp-editor', 'wp-element', 'wp-components', 'wp-data'),
 		false,
 		true
 	);

@@ -3,6 +3,10 @@
 	padding-bottom: 2em;
 }
 
+.polaroid-image-section > * {
+	max-width: 60rem;
+}
+
 .polaroid-image-section .polaroid-heading-container {
 	display: flex;
 	flex-direction: column;

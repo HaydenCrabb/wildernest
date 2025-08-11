@@ -75,13 +75,16 @@
 		    return el(Fragment, null, [
 			    el('div', {
 			    	className: "polaroid-image-section",
+			    	key: 'outer-section',
 			    }, [
 			    	el('div', {
 			    		className: "polaroid-heading-container",
+			    		key: 'polaroid-container',
 			    	}, [
 			    		el(RichText, {
 					        tagName: 'h3',
 					        className: 'polaroid-heading',
+					        key: 'polaroid-heading',
 					        value: attributes.mainHeading,
 					        onChange: (val) => setAttributes({ mainHeading: val }),
 					        placeholder: 'Add Main Header text…',
@@ -89,6 +92,7 @@
 						el(RichText, {
 					        tagName: 'h3',
 					        className: 'polaroid-sub-heading',
+					        key: 'polaroid-subheading',
 					        value: attributes.subHeading,
 					        onChange: (val) => setAttributes({ subHeading: val }),
 					        placeholder: 'Add sub Heading text ...',
@@ -96,9 +100,11 @@
 			    	]),
 			    	el('div', {
 			    		className: "polaroid-image-container",
+			    		key: 'image-container',
 			    	},
 			    		el('div', {
 			    			className: "polaroid-outer",
+			    			key: 'polaroid-outer',
 			    		}, 
 			    			el(MediaUploadCheck, null,
 								el(MediaUpload, {
@@ -111,6 +117,7 @@
 										return attributes.mainImage?.url
 											? el('div', {
 												className: "polaroid-image",
+												key: 'image',
 												style: {
 													backgroundImage: `url("${attributes.mainImage.url}")`
 												},
@@ -119,6 +126,7 @@
 												role: "button"
 											})
 											: el(Button, {
+												key: 'button',
 												onClick: open,
 												variant: 'primary',
 												isSecondary: true

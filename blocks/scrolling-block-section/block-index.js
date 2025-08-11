@@ -87,19 +87,23 @@
 				),
 		    	el('div', { 
 		    		className: 'scrolling-block-section',
+		    		key: 'outer-section',
 					
 		    	}, [
 		    		el('div', {
 						className: 'background-pattern',
+						key: 'background',
 						style: {
 							backgroundColor: '#483e30'
 						}
 					}, [
 						el('div', { 
 							className: 'scrolling-block-container max-width center-aligned',
-							style: {backgroundColor: '#483e30'}
+							style: {backgroundColor: '#483e30'},
+							key: 'block-container',
 						}, [
 							el(InnerBlocks, {
+								key: 'inner-blocks',
 								allowedBlocks: ['core/paragraph', 'core/heading', 'core/image'],
 								template: [
 								],

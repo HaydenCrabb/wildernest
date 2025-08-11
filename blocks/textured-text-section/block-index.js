@@ -88,27 +88,32 @@
 					})
 				),
 		    	el('div', { 
-		    		className: 'textured-text-section'
+		    		className: 'textured-text-section',
+		    		key: 'textured-text-section',
 		    	}, [
 		    		el('div', {
 						className: 'background-pattern',
+						key: 'background-patter',
 						style: {
 							backgroundImage: 'url("https://sld.tid.temporary.site/website_c268a004/wp-content/uploads/2025/07/background-pattern-smaller.webp")'
 						}
 					}, [
 						el('div', {
 							className: 'textured-overlay',
+							key: 'textured-overlay',
 							style: {
 								backgroundColor: overlayColor
 							}
 						}),
 						el('div', { 
-							className: 'textured-text-container max-width center-aligned'
+							className: 'textured-text-container max-width center-aligned',
+							key: 'textured-text-container',
 						}, [
 
 							el(RichText, {
 								tagName: 'h2',
 								className: 'header-text',
+								key: 'header-text',
 								value: attributes.headerText,
 								onChange: (val) => setAttributes({ headerText: val }),
 								placeholder: 'Add Header…',
@@ -116,6 +121,7 @@
 							el(RichText, {
 								tagName: 'div',
 								className: 'body-text',
+								key: 'body-text',
 								value: attributes.bodyText,
 								onChange: (val) => setAttributes({ bodyText: val }),
 								placeholder: 'Add body paragraph...',

@@ -3,7 +3,7 @@ console.log("Registering cover Image");
 ( function (blocks, element, blockEditor, components ) {
 
 	const { registerBlockType } = blocks
-	const { MediaUpload, MediaUploadCheck, InspectorControls, PanelColorSettings, RichText } = blockEditor
+	const { MediaUpload, MediaUploadCheck, InspectorControls, PanelColorSettings, RichText, URLInput } = blockEditor
 	const { PanelBody, RangeControl, Button } = components
 	const { createElement: el, Fragment } = element
 
@@ -52,15 +52,18 @@ console.log("Registering cover Image");
 			function renderBackgroundPreview(open, background_url, overlayOpacity, overlayColor) {
 				return el('div', {
 					className: 'wrapper',
+					key: 'wrapper',
 				}, [
 					el('div', {
 						className: 'inner-image-container',
+						key: 'image-container',
 						style: {
 							backgroundImage: `url("${background_url}")`
 						}
 					}, [
 						el('div', {
 							className: 'cover-opacity',
+							key: 'overlay',
 							style: {
 								backgroundColor: overlayColor,
 								opacity: overlayOpacity
@@ -68,10 +71,12 @@ console.log("Registering cover Image");
 						}),
 						el('div', {
 							className: 'text-container max-width center-aligned',
+							key: 'text-container',
 						}, [
 							el(RichText, {
 						        tagName: 'h2',
 						        className: 'cover-header',
+						        key: 'header',
 						        value: attributes.header,
 						        onChange: (val) => setAttributes({ header: val }),
 						        placeholder: 'Add Header text…',
@@ -79,22 +84,26 @@ console.log("Registering cover Image");
 							el(RichText, {
 						        tagName: 'p',
 						        className: 'cover-paragraph',
+						        key: 'paragraph',
 						        value: attributes.paragraph,
 						        onChange: (val) => setAttributes({ paragraph: val }),
 						        placeholder: 'Add paragraph text… or leave blank for no text.',
 						      }),
 							el('div', {
 								className: 'cover-button',
+								key: 'cover-button-container',
 							}, [
 								el(RichText, {
 									tagName: 'span',
 									className: 'cover-button-text',
 									value: attributes.buttonText,
+									key: 'buttonText',
 									onChange: (val) => setAttributes({ buttonText: val }),
 									placeholder: 'Add Button Text…',
 								}),
-								el(wp.blockEditor.URLInput, {
+								el(URLInput, {
 									value: attributes.buttonUrl,
+									key: 'buttonURL',
 									onChange: (val) => setAttributes({ buttonUrl: val }),
 								})
 							])
@@ -103,6 +112,7 @@ console.log("Registering cover Image");
 					el(Button, {
 						onClick: open,
 						isSecondary: true,
+						key: 'change-bg-btn',
 						className: 'select-image-button'
 					}, 'Change Background Image')
 				]);
@@ -137,7 +147,7 @@ console.log("Registering cover Image");
 						}]
 					})
 				),
-				el('div', { className: 'cover-image-section' },
+				el('div', { className: 'cover-image-section', key: 'section' },
 					el(MediaUploadCheck, null,
 						el(MediaUpload, {
 							onSelect: function (media) {
@@ -145,6 +155,7 @@ console.log("Registering cover Image");
 							},
 							allowedTypes: ['image'],
 							value: attributes.background_image && attributes.background_image.id,
+							key: 'media-upload',
 							render: function ({ open }) {
 								return renderBackgroundPreview(open, background_url, overlayOpacity, overlayColor);
 							}

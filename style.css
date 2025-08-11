@@ -272,9 +272,10 @@ h5 {
 /* Footer */
 
 #site-footer {
+	position: relative;
 	background-color: #4F5341;
 	box-shadow: 0px -5px 8px #0D0D0D55;
-	margin-top: 3em;
+	margin-top: -8px;
 }
 
 .footer-inner {

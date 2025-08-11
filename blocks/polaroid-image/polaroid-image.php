@@ -15,7 +15,7 @@ $main_image_style = 'style="background-image: url(' . esc_url($main_image_url) .
 
 
 ?>
-<div class="polaroid-image-section">
+<div class="polaroid-image-section center-aligned">
   <div class="polaroid-heading-container">
     <h3 class="polaroid-heading"><?php echo $main_heading; ?></h3>
     <h4 class="polaroid-sub-heading"><?php echo $sub_heading; ?></h4>

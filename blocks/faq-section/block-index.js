@@ -9,15 +9,15 @@
 		title: 'Frequently Asked Questions',
 		keywords: ['Frequently', 'Asked', 'Questions', 'FAQ'],
 		icon: {
-		  src: wp.element.createElement(
+		  src: el(
 		    'svg',
 		    {
 		      xmlns: 'http://www.w3.org/2000/svg',
 		      viewBox: '0 0 135.266 67.633',
 		    },
 		    // Group and inner rects + paths
-		    wp.element.createElement('g', null,
-		      wp.element.createElement('rect', {
+		    el('g', null,
+		      el('rect', {
 		        x: '1',
 		        y: '1',
 		        width: '65.633',
@@ -26,12 +26,12 @@
 		        ry: '5.498',
 		        fill: '#fff'
 		      }),
-		      wp.element.createElement('path', {
+		      el('path', {
 		        d: 'M61.135,2c2.48,0,4.498,2.018,4.498,4.498V61.135c0,2.48-2.018,4.498-4.498,4.498H6.498c-2.48,0-4.498-2.018-4.498-4.498V6.498c0-2.48,2.018-4.498,4.498-4.498H61.135m0-2H6.498C2.909,0,0,2.909,0,6.498V61.135c0,3.589,2.909,6.498,6.498,6.498H61.135c3.589,0,6.498-2.909,6.498-6.498V6.498c0-3.589-2.909-6.498-6.498-6.498h0Z',
 		        fill: '#444'
 		      })
 		    ),
-		    wp.element.createElement('rect', {
+		    el('rect', {
 		      x: '67.633',
 		      y: '0',
 		      width: '67.633',
@@ -40,23 +40,23 @@
 		      ry: '6.498',
 		      fill: '#444'
 		    }),
-		    wp.element.createElement('path', {
+		    el('path', {
 		      d: 'M90.119,31.499c-.531,0-.945,.205-1.242,.615s-.445,1.018-.445,1.822c0,.719,.148,1.281,.445,1.688s.707,.609,1.23,.609c.688,0,1.189-.309,1.506-.926v-2.912c-.324-.598-.822-.896-1.494-.896Z',
 		      fill: 'none'
 		    }),
-		    wp.element.createElement('path', {
+		    el('path', {
 		      d: 'M55.431,31.47c-.438,0-.805,.159-1.102,.478s-.48,.765-.551,1.339h3.176v-.082c-.031-.551-.18-.978-.445-1.28s-.625-.454-1.078-.454Z',
 		      fill: 'none'
 		    }),
-		    wp.element.createElement('path', {
+		    el('path', {
 		      d: 'M48.675,31.499c-.531,0-.945,.205-1.242,.615s-.445,1.018-.445,1.822c0,.719,.148,1.281,.445,1.688s.707,.609,1.23,.609c.688,0,1.189-.309,1.506-.926v-2.912c-.324-.598-.822-.896-1.494-.896Z',
 		      fill: 'none'
 		    }),
-		    wp.element.createElement('path', {
+		    el('path', {
 		      d: 'M64.888,31.499c-.715,0-1.229,.332-1.541,.996v2.742c.332,.664,.85,.996,1.553,.996,.52,0,.924-.201,1.213-.604s.434-1.008,.434-1.816c0-.738-.143-1.309-.428-1.711s-.695-.604-1.23-.604Z',
 		      fill: 'none'
 		    }),
-		    wp.element.createElement('path', {
+		    el('path', {
 		      d: 'M96.875,31.47c-.438,0-.805,.159-1.102,.478s-.48,.765-.551,1.339h3.176v-.082c-.031-.551-.18-.978-.445-1.28s-.625-.454-1.078-.454Z',
 		      fill: 'none'
 		    })
@@ -82,7 +82,10 @@
 
 			function addFAQ() {
 				setAttributes({
-					faqItems: [...faqItems, { question: '', answer: '' }]
+					faqItems: [
+						...faqItems,
+						{ id: Date.now().toString(36) + Math.random().toString(36).slice(2), question: '', answer: '' }
+					]
 				});
 			}
 
@@ -92,41 +95,41 @@
 				setAttributes({ faqItems: updatedItems });
 			}
 
-			return el('div', { className: 'faq-block' }, 
-				el('div', {
-					className: "faq-wrapper",
-				}, [
-					el('h3', null, 'FAQs'),
+			return el('div', { className: 'faq-block' },
+				el('div', { className: 'faq-wrapper' }, [
+					el('h3', { key: 'faqs-title' }, 'FAQs'),
 
-					...faqItems.map((item, index) =>
-						el('div', { className: 'faq-item', key: index }, [
-							el('div', {
-								className: "faq-header",
-							}, 
+					...faqItems.map(function (item, index) {
+						var id = item.id || ('tmp-' + index); // fallback if older items don’t have id
+						return el('div', { className: 'faq-item', key: 'item-' + id }, [
+							el('div', { className: 'faq-header', key: 'hdr-' + id },
 								el(RichText, {
 									tagName: 'h4',
 									className: 'faq-question',
 									placeholder: 'Enter question...',
 									value: item.question,
-									onChange: (val) => updateFAQ(index, 'question', val)
+									onChange: function (val) { updateFAQ(index, 'question', val); }
 								})
 							),
 							el(RichText, {
+								key: 'ans-' + id,
 								tagName: 'p',
 								className: 'faq-answer',
 								placeholder: 'Enter answer...',
 								value: item.answer,
-								onChange: (val) => updateFAQ(index, 'answer', val)
+								onChange: function (val) { updateFAQ(index, 'answer', val); }
 							}),
 							el(Button, {
+								key: 'rm-' + id,
 								isDestructive: true,
 								className: 'removal-button',
-								onClick: () => removeFAQ(index)
+								onClick: function () { removeFAQ(index); }
 							}, 'X')
-						])
-					),
+						]);
+					}),
 
 					el(Button, {
+						key: 'add-faq',
 						isPrimary: true,
 						onClick: addFAQ
 					}, 'Add FAQ')

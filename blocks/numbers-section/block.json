@@ -1,0 +1,15 @@
+{
+  "apiVersion": 3,
+  "name": "hcsolutions/numbers-section",
+  "title": "Numbers Section",
+  "category": "layout",
+  "description": "Columns of Statistic numbers",
+  "supports": {
+    "html": false
+  },
+  "editorScript": [ "file:./block-index.js"],
+  "editorStyle": "file:./editor.css",
+  "style": "file:./block-style.css",
+  "render": "file:./numbers-section.php",
+  "script": "file:./numbers.js"
+}
