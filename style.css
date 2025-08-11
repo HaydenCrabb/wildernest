@@ -108,18 +108,11 @@ h5 {
 	top: 32px;
 }
 
-#site-header > * {
-	margin-left: auto;
-	margin-right: auto;
-}
-
 .header-inner {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding-left: var(--document-padding);
-	padding-right: var(--document-padding);
 	padding-top: 1em;
 }
 
@@ -157,7 +150,7 @@ h5 {
 }
 
 .header-navigation-wrapper {
-	max-width: 70%;
+	max-width: 80%;
 	min-width: 25%;
 }
 
@@ -592,6 +585,10 @@ h5 {
 		width: 25vw;
 		height: auto;
 	}
+	.header-navigation-wrapper {
+		max-width: 90%;
+		font-size: 0.8rem;
+	}
 	.menu-modal.open {
 		display: none;
 	}
@@ -639,8 +636,8 @@ h5 {
 @media ( min-width: 1100px ) {
 
 	.header-navigation-wrapper {
-		max-width: 60%;
-		min-width: 25%;
+		max-width: 70%;
+		font-size: 1rem;
 	}
 
 	.reset-list-style {
@@ -688,6 +685,11 @@ h5 {
 	.cover-header .front-page-icon {
 	    max-width: 130px;
 	    max-height: 130px;
+	}
+	#site-header .custom-logo {
+		width: 14vw;
+		max-width: 250px;
+		height: auto;
 	}
 
 

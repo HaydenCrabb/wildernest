@@ -35,63 +35,67 @@
 		wp_body_open();
 		?>
 
-		<header id="site-header">
+		<header id="site-header" class="center-aligned">
 
-			<div class="header-inner max-width center-aligned">
+			<div class="sizing-container">
 
-				<div class="header-titles">
+				<div class="header-inner">
 
-					<?php
-						if (function_exists('the_custom_logo')) {
-						    the_custom_logo();
-						}
-					?>
-
-				</div><!-- .header-titles -->
-
-				<button id="hamburger-icon" class="mobile-menu-hamburger mobile-only" aria-label="Open Mobile Menu">
-					<span></span>
-					<span></span>
-					<span></span>
-				</button>
-
-
-				<div class="header-navigation-wrapper desktop-only">
-
-					<?php
-					if ( has_nav_menu( 'primary' ) ) {
-						?>
-
-							<nav class="primary-menu-wrapper" aria-label="<?php echo esc_attr_x( 'Horizontal', 'menu', 'twentytwenty' ); ?>">
-
-								<ul class="primary-menu reset-list-style">
-
-								<?php
-								if ( has_nav_menu( 'primary' ) ) {
-
-									wp_nav_menu(
-										array(
-											'container'  => '',
-											'items_wrap' => '%3$s',
-											'theme_location' => 'primary',
-										)
-									);
-
-								} 
-								?>
-
-								</ul>
-
-							</nav><!-- .primary-menu-wrapper -->
+					<div class="header-titles">
 
 						<?php
-					}
+							if (function_exists('the_custom_logo')) {
+							    the_custom_logo();
+							}
+						?>
 
-					?>
+					</div><!-- .header-titles -->
 
-				</div><!-- .header-navigation-wrapper -->
+					<button id="hamburger-icon" class="mobile-menu-hamburger mobile-only" aria-label="Open Mobile Menu">
+						<span></span>
+						<span></span>
+						<span></span>
+					</button>
 
-			</div><!-- .header-inner -->
+
+					<div class="header-navigation-wrapper desktop-only">
+
+						<?php
+						if ( has_nav_menu( 'primary' ) ) {
+							?>
+
+								<nav class="primary-menu-wrapper" aria-label="<?php echo esc_attr_x( 'Horizontal', 'menu', 'twentytwenty' ); ?>">
+
+									<ul class="primary-menu reset-list-style">
+
+									<?php
+									if ( has_nav_menu( 'primary' ) ) {
+
+										wp_nav_menu(
+											array(
+												'container'  => '',
+												'items_wrap' => '%3$s',
+												'theme_location' => 'primary',
+											)
+										);
+
+									} 
+									?>
+
+									</ul>
+
+								</nav><!-- .primary-menu-wrapper -->
+
+							<?php
+						}
+
+						?>
+
+					</div><!-- .header-navigation-wrapper -->
+
+				</div><!-- .header-inner -->
+
+			</div>
 
 
 		</header><!-- #site-header -->
