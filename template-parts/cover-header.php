@@ -15,11 +15,15 @@ $cover_inner_style = 'style=" background-image: url(' . $cover_image_url . ')"';
 
 $subheading = get_post_meta($post->ID, 'wildernest_subheading_setting', true);
 
+$hide_indicator = (bool) get_post_meta( get_the_ID(), 'wildernest_scroll_indicator', true );
+
 ?>
 
 <div class="cover-header static-image <?php echo $cover_header_classes; ?>" style="height: <?php echo $max_height; ?>;">
 	<div class="cover-overlay"></div>
-	<div class="scroll-indicator"><span class="roboto">Scroll</span> ––––––––</div>
+	<?php if (!$hide_indicator): ?>
+		<div class="scroll-indicator"><span class="roboto">Scroll</span> ––––––––</div>
+	<?php endif; ?>
 	<div class="cover-header-inner max-width" <?php echo $cover_inner_style ?>>
 		<div class="text-container">
 			<div class="heading-inner-containers">

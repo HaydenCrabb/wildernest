@@ -13,7 +13,7 @@ $cover_header_classes = is_front_page() ? 'front-page' : '';
 $video_url = get_template_directory_uri() . '/assets/video/cover-header-video.mp4';
 
 $front_page_icon = '';
-$video_play_button_src = 'style="background-image: url(' . get_site_url() . '/wp-content/themes/wildernest/assets/video/play.svg)"';
+$video_play_button_src = 'style="background-image: url(' . get_site_url() . '/wp-content/themes/wildernest/assets/images/play.svg)"';
 
 if (is_front_page()) {
 	$front_page_icon = get_theme_mod('front-page-icon');

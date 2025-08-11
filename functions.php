@@ -139,11 +139,22 @@ add_action('init', function () {
 /* Register Cover Header custom settings */
 
 function wildernest_register_subheading_meta() {
+	// Subheading
 	register_post_meta('page', 'wildernest_subheading_setting', array(
 		'show_in_rest' => true,
 		'single'       => true,
 		'type'         => 'string',
 		'auth_callback' => function() {
+			return current_user_can('edit_posts');
+		},
+	));
+	// Scroll Indicator
+	register_post_meta('page', 'wildernest_scroll_indicator', array(
+		'show_in_rest'  => true,
+		'single'        => true,
+		'type'          => 'boolean',
+		'default'       => false,
+		'auth_callback' => function () {
 			return current_user_can('edit_posts');
 		},
 	));
@@ -155,7 +166,7 @@ function wildernest_enqueue_editor_assets() {
 	wp_enqueue_script(
 		'wildernest-subheading-panel',
 		get_template_directory_uri() . '/assets/js/subheading-panel.js',
-		array('wp-plugins', 'wp-editor', 'wp-element', 'wp-components', 'wp-data'),
+		array( 'wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data' ),
 		false,
 		true
 	);
