@@ -10,7 +10,7 @@
  * 
 */
 ?>
-
+		</article>
 		<footer id="site-footer">
 
 			<div class="footer-inner max-width center-aligned">
