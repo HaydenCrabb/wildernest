@@ -35,6 +35,10 @@
     "buttonUrl": {
       "type": "string",
       "default": ""
+    },
+    "parrallax": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

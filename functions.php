@@ -131,8 +131,36 @@ add_action('init', function () {
 	register_block_type(__DIR__ . '/blocks/gallery-scroller');
 	register_block_type(__DIR__ . '/blocks/floating-banner');
 	register_block_type(__DIR__ . '/blocks/numbers-section');
+	register_block_type(__DIR__ . '/blocks/scroll-item');
 
 });
+
+
+// Defer css loading to improve load times.
+add_filter('style_loader_tag', function($html, $handle) {
+	$defer_handles = [
+		'hcsolutions-large-cover-image-with-text-style',
+		'hcsolutions-side-by-side-section-style',
+		'hcsolutions-textured-text-section-style',
+		'hcsolutions-scrolling-block-section-style',
+		'hcsolutions-button-style',
+		'hcsolutions-polaroid-image-style',
+		'hcsolutions-tri-image-section-style',
+		'hcsolutions-faq-section-style',
+		'hcsolutions-gallery-scroller-style',
+		'hcsolutions-floating-banner-style',
+		'hcsolutions-numbers-section-style',
+		'hcsolutions-scroll-item-style',
+	];
+
+	if ( in_array( $handle, $defer_handles, true ) && isset( wp_styles()->registered[ $handle ] ) ) {
+		$src = wp_styles()->registered[ $handle ]->src;
+		return '<link rel="preload" href="' . esc_url( $src ) . '" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">'
+		     . '<noscript>' . $html . '</noscript>';
+	}
+	return $html;
+}, 10, 2);
+
 
 
 

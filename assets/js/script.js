@@ -1,69 +1,163 @@
 gsap.registerPlugin(ScrollTrigger);
 
 
-function closeModal(button) {
-	//if not triggered by button, re-enable scroll
-	if (!button) {
-		$('#hamburger-icon').toggleClass('open');
-		$("html").toggleClass("no-scroll");
-	}
+jQuery(function ($) {
+    if ($('.fade-slide-in').length) {
+
+        $('.fade-slide-in').each(function () {
+            const el = this;
+
+            gsap.from(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 95%',
+                    toggleActions: 'play none none reverse'
+                },
+                opacity: 0,
+                x: -50, // slide in from left
+                duration: 1.5,
+                ease: 'power2.out'
+            });
+        });
+    }
+
+    if ($('.fade-slide-down').length) {
+
+        $('.fade-slide-down').each(function () {
+            const el = this;
+
+            gsap.from(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 95%',
+                    toggleActions: 'play none none reverse'
+                },
+                opacity: 0,
+                y: -50, // slide down
+                duration: 1.5,
+                ease: 'power2.out'
+            });
+        });
+    }
+
+    if ($('.slight-slide-down').length) {
+
+        $('.slight-slide-down').each(function () {
+            const el = this;
+
+            gsap.from(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 80%',
+                    end: 'top 30%', 
+                    scrub: 1, 
+                    toggleActions: 'play none none reverse'
+                },
+                y: -50, // slide down
+                ease: 'power2.out'
+            });
+        });
+    }
+});
 
 
-	//make animation happen with gsap
-	gsap.to(".menu-modal-inner", {
+// ---- Config
+const MODAL_ANIM_DUR = 0.3; // seconds
+const EASE = "power2.out";
+
+// ---- Utilities
+function openModal() {
+    $(".menu-modal").addClass("open");
+    $("html").addClass("no-scroll");
+    $("#hamburger-icon").addClass("open");
+
+    gsap.from(".menu-modal-inner", {
         xPercent: 100,
         yPercent: -100,
-        duration: 0.3,
-        ease: "power2.out",
+        borderRadius: 0,
+        duration: 0.5,
+        ease: EASE,
         onComplete: () => {
-            // Remove open class and clear transform
-            $(".menu-modal").removeClass('open');
-            gsap.set(".menu-modal-inner", { clearProps: "borderRadius,transform" });
-            gsap.set(".mobile-menu-list-wrapper li", { clearProps: "opacity,transform" });
+            gsap.to(".mobile-menu-list-wrapper li", {
+                x: "-1em",
+                opacity: 1,
+                duration: 0.5,
+                ease: EASE,
+                stagger: 0.06
+            });
         }
     });
 }
 
+// Return a Promise so we can chain navigation *after* it closes.
+function closeModal({ triggeredByButton = false } = {}) {
+    return new Promise((resolve) => {
+        // Ensure classes reflect closed state (no toggles -> no desync)
+        $("#hamburger-icon").removeClass("open");
+        $("html").removeClass("no-scroll");
 
-$('#hamburger-icon').on('click', function() {
+        gsap.to(".menu-modal-inner", {
+            xPercent: 100,
+            yPercent: -100,
+            duration: MODAL_ANIM_DUR,
+            ease: EASE,
+            onComplete: () => {
+                $(".menu-modal").removeClass("open");
+                gsap.set(".menu-modal-inner", { clearProps: "borderRadius,transform" });
+                gsap.set(".mobile-menu-list-wrapper li", { clearProps: "opacity,transform" });
+                resolve();
+            }
+        });
+    });
+}
 
-    $(this).toggleClass('open');
-
-    /* Prevent scrolling and re-enable it */
-    $("html").toggleClass("no-scroll");
-
+// ---- Triggers
+$('#hamburger-icon').on('click', function () {
     if ($(".menu-modal").hasClass('open')) {
-    	closeModal(true);
+        closeModal({ triggeredByButton: true });
+    } else {
+        openModal();
     }
-    else {
-    	//make object appear.
-    	$(".menu-modal").addClass('open');
-
-    	//animate object 
-    	gsap.from(".menu-modal-inner", {
-		  xPercent: 100,
-		  yPercent: -100,
-		  borderRadius: 0,
-		  duration: 0.5,
-		  ease: "power2.out",
-		  onComplete: () => {
-
-		  	//animate every child. 
-		  	gsap.to(".mobile-menu-list-wrapper li", {
-			  x: "-1em",               
-			  opacity: 1,           
-			  duration: 0.5,
-			  ease: "power2.out",
-			  stagger: 0.06
-			});
-		  }
-		});
-    }
-
 });
 
-$(".menu-modal").on('click', function() {
-	closeModal(false);
+// Only close when clicking the dark overlay, not the inner panel.
+// (Prevents accidental close while interacting INSIDE the modal.)
+$(".menu-modal-inner").on("click", function (e) {
+    e.stopPropagation();
+});
+$(".menu-modal").on('click', function () {
+    // Clicked the overlay
+    closeModal();
+});
+
+// ---- Delay page navigation until after modal closes
+// Target links in the modal and (optionally) in your site header nav.
+$(document).on("click", '.menu-modal a, header a', function (e) {
+    // Ignore non-left clicks, modifier keys, or targets with special attributes
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || this.target === "_blank") return;
+
+    const href = $(this).attr("href");
+    if (!href || href.startsWith("javascript:")) return;
+
+    // If modal isn't open, let it behave normally
+    if (!$(".menu-modal").hasClass("open")) return;
+
+    e.preventDefault();
+
+    // Close, then navigate
+    closeModal().then(() => {
+        // Handle same-page anchors smoothly
+        if (href.startsWith("#")) {
+            const $target = $(href);
+            if ($target.length) {
+                // Scroll to anchor (optional: smooth)
+                $target[0].scrollIntoView({ behavior: "smooth" });
+                return;
+            }
+        }
+        // Navigate to a different page/URL
+        window.location.href = href;
+    });
 });
 
 

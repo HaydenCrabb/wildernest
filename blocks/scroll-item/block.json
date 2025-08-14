@@ -1,0 +1,25 @@
+{
+  "apiVersion": 3,
+  "name": "hcsolutions/scroll-item",
+  "title": "Scroll Item",
+  "category": "design",
+  "description": "A item within the scroll container",
+  "keywords": ["button", "link", "scroll", "item"],
+  "supports": {
+    "html": false
+  },
+  "editorScript": "file:./block-index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./block-style.css",
+  "render": "file:./scroll-item.php",
+  "attributes": {
+    "mainImage": {
+      "type": "object",
+      "default": null
+    },
+    "description": {
+      "type": "string",
+      "default": null
+    }
+  }
+}

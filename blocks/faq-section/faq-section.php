@@ -14,7 +14,7 @@
     <div class="gold-band"></div>
     <div class="textured-overlay faq-textured-overlay" style="background-color: #4F5341"></div>
     <div class="faq-block max-width center-aligned">
-      <h3>Frequently Asked Questions</h3>
+      <h3 class="fade-slide-in">Frequently Asked Questions</h3>
       <?php foreach ( $attributes['faqItems'] as $item ) :
         $question = isset( $item['question'] ) ? $item['question'] : '';
         $answer   = isset( $item['answer'] ) ? $item['answer'] : '';

@@ -17,9 +17,12 @@ $paragraph = $attributes['paragraph'] ?? '';
 $buttonText = $attributes['buttonText'] ?? '';
 $buttonUrl = esc_url($attributes['buttonUrl']) ?? '';
 
+$include_parrallax = esc_attr( $attributes['parrallax'] ?? false);
+$parrallax_text = ($include_parrallax ? 'parrallax' : '');
+
 ?>
 
-<div class="cover-image-section alignfull" style="background-image: url('<?php echo $background_url; ?>');">
+<div class="cover-image-section alignfull <?php echo $parrallax_text; ?>" style="background-image: url('<?php echo $background_url; ?>');">
   <div class="cover-image-section-cover" style="background-color: <?php echo $overlay_color; ?>; opacity: <?php echo $overlay_opacity; ?>;"></div>
   <?php if ($header != '' || $paragraph != ''): ?>
     <div class="text-container">

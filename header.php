@@ -119,14 +119,11 @@
 		<link rel="icon" href="<?php echo $favicon_url; ?>" type="image/x-icon">
 		<link rel="apple-touch-icon" sizes="180x180" href="<?php echo $apple_touch_icon; ?>">
 		<link rel="icon" type="image/png" sizes="32x32" href="<?php echo $favicon_32; ?>">
-		<link rel="manifest" href="/site.webmanifest">
+		<link rel="manifest" href="<?php echo get_site_url(); ?>/site.manifest">
 
 		<!-- Mobile / Browser Colors -->
 		<meta name="theme-color" content="#494D3D">
 		<meta name="msapplication-TileColor" content="#494D3D">
-
-		<!-- Canonical URL -->
-		<link rel="canonical" href="<?php echo $site_url; ?>">
 
 
 		<!-- "sameAs": [
@@ -135,8 +132,10 @@
 		  ] -->
 
 
-		<!-- Include the roboto font -->
-		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+		<!-- Include the roboto font and defer until after page load -->
+		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"></noscript>
+
 		<?php wp_head(); ?>
 
 	</head>

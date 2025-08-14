@@ -5,7 +5,6 @@
 	background-size: cover;
 	position: relative;
 }
-
 .cover-image-section .cover-image-section-cover {
 	position: absolute;
 	top: 0;
@@ -71,18 +70,13 @@
 	.cover-image-section .header {
 		font-size: 2rem;
 	}
-
-
 }
 
 /* Breakpoint from mobile to desktop */
 @media ( min-width: 782px ) {
-
-
-}
-
-
-@media ( min-width: 1100px ) {
+	.cover-image-section.parrallax {
+		background-attachment: fixed;
+	}
 
 
 }

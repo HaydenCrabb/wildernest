@@ -147,6 +147,7 @@ h5 {
 }
 #site-header a:hover {
 	color: #C38A20;
+	font-size: 1.05rem;
 }
 
 .header-navigation-wrapper {
@@ -158,6 +159,10 @@ h5 {
 	width: 40vw;
 	height: auto;
 	max-width: 275px;
+	transition: all 0.3s ease;
+}
+#site-header .custom-logo:hover {
+	transform: scale(1.05);
 }
 #site-header .custom-logo-link {
 	display: inline-block;
@@ -207,13 +212,15 @@ h5 {
 
 .menu-modal-inner {
 	position: relative;
-	height: 70vh;
-	width: auot;
+	height: 80vh;
+	width: auto;
+	top: -10vh;
 	max-width: 100%;
 	background-color: #000;
 	z-index: 90;
 	border-radius: 0px 0px 0px 400px;
 }
+.mobile-nav-menu
 .mobile-menu-list-wrapper {
 	position: relative;
 	display: flex;
@@ -241,6 +248,15 @@ h5 {
 .mobile-nav-menu {
 	padding-left: var(--document-padding);
 	padding-right: var(--document-padding);
+  position: relative;
+  top: 7vh;
+  margin-right: 10px;
+}
+
+@media (min-height: 700px) {
+	.mobile-nav-menu {
+	  top: 10vh;
+	}
 }
 
 .menu-modal a {

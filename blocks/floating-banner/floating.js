@@ -7,25 +7,45 @@ if (window.wp && wp.blocks) {
 			return;
 		}
 
-		// Target each floating banner on the page
-		$('.cover-image-section.floating-banner').each(function() {
-			const $section = $(this);
-			const $float = $section.find('.float-section');
+		ScrollTrigger.matchMedia({
+			// Desktop
+			"(min-width: 782px)": function () {
+				$('.cover-image-section.floating-banner').each(function () {
+					const $section = $(this);
+					const $float = $section.find('.float-section');
 
-			// Animate the float-section to move slower than scroll
-			gsap.to($float, {
-				y: () => {
-					// Move down by 50% of its own height (adjust for desired speed)
-					return $float.outerHeight() * 0.8;
-				},
-				ease: 'none', // linear motion
-				scrollTrigger: {
-					trigger: $section[0],
-					start: 'top bottom',   // when section enters viewport
-					end: 'bottom top',     // when section leaves viewport
-					scrub: true            // link animation to scroll
-				}
-			});
+					gsap.to($float, {
+						y: () => $float.outerHeight() * 0.8, // slower, longer move
+						ease: 'none',
+						scrollTrigger: {
+							trigger: $section[0],
+							start: 'top bottom',
+							end: 'bottom top',
+							scrub: true
+						}
+					});
+				});
+			},
+
+			// Mobile
+			"(max-width: 781px)": function () {
+				$('.cover-image-section.floating-banner').each(function () {
+					const $section = $(this);
+					const $float = $section.find('.float-section');
+
+					gsap.to($float, {
+						y: () => $float.outerHeight() * 0.3,
+						ease: 'none',
+						scrollTrigger: {
+							trigger: $section[0],
+							start: 'top 90%',
+							end: 'bottom top',
+							scrub: true
+						}
+					});
+				});
+			}
 		});
+
 	});
 }

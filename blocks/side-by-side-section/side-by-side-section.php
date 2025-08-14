@@ -16,7 +16,7 @@ $hover_text  = $attributes['hoverText'] ?? '';
   <?php
     if ($hover_text != '') { ?>
       <div class="hover-text-container">
-        <div class="hover-text"><?php echo esc_html($hover_text); ?></div>
+        <div class="hover-text fade-slide-in"><?php echo esc_html($hover_text); ?></div>
       </div>
     <?php
     } 

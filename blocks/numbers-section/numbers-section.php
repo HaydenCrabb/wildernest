@@ -24,7 +24,7 @@ if ( empty( $attributes['items'] ) || !is_array( $attributes['items'] ) ) {
       <div class="textured-overlay" style="background-color: #2C465D"></div>
         <div class="numbers-container max-width center-aligned">
           <div class="header-container">
-            <h3 class="header-text"><?php echo $header_text; ?></h3>
+            <h3 class="header-text fade-slide-in"><?php echo $header_text; ?></h3>
           </div>
           <div class="by-the-numbers-grid">
             <?php foreach ( $attributes['items'] as $item ) : ?>

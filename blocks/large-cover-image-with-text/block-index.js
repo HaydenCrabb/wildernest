@@ -4,7 +4,7 @@ console.log("Registering cover Image");
 
 	const { registerBlockType } = blocks
 	const { MediaUpload, MediaUploadCheck, InspectorControls, PanelColorSettings, RichText, URLInput } = blockEditor
-	const { PanelBody, RangeControl, Button } = components
+	const { PanelBody, PanelRow, ToggleControl, RangeControl, Button } = components
 	const { createElement: el, Fragment } = element
 
 
@@ -34,6 +34,7 @@ console.log("Registering cover Image");
 			paragraph: {type: 'string', default: ''},
 			buttonText: {type: 'string', default: ''},
 			buttonUrl: {type: 'string', default: ''},
+			parrallax: {type: 'boolean', default: false},
 
 		},
 			edit: function ({ attributes, setAttributes }) {
@@ -42,6 +43,7 @@ console.log("Registering cover Image");
 			const overlayOpacity = attributes.overlay_opacity ?? 0.15;
 
 			var hasBackground = !!attributes.background_image;
+			var parrallax = !!attributes.parrallax;
 			var background_url = '';
 
 			if (hasBackground) {
@@ -145,7 +147,17 @@ console.log("Registering cover Image");
 							value: overlayColor,
 							onChange: (color) => setAttributes({ overlay_color: color })
 						}]
-					})
+					}),
+					el(PanelRow, {},
+						el(ToggleControl, {
+							label: 'Make Parrallax?',
+							checked: !!parrallax,
+							onChange: function (val) {
+								setAttributes({ parrallax: !!val });
+							},
+							help: 'Toggle the background image to have parrallax styling',
+						})
+					)
 				),
 				el('div', { className: 'cover-image-section', key: 'section' },
 					el(MediaUploadCheck, null,

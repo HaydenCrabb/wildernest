@@ -20,7 +20,7 @@ $main_image_style = 'style="background-image: url(' . esc_url($main_image_url) .
     <h3 class="polaroid-heading"><?php echo $main_heading; ?></h3>
     <h4 class="polaroid-sub-heading"><?php echo $sub_heading; ?></h4>
   </div>
-  <div class="polaroid-image-container">
+  <div class="polaroid-image-container slight-slide-down">
     <div class="polaroid-highlight"></div>
     <div class="polaroid-outer">
       <div class="polaroid-image" <?php echo $main_image_style; ?>></div>

@@ -14,3 +14,7 @@
     margin-right: 10px;
     vertical-align: top;
 }
+
+.scrolling-block-container .scrolling-track {
+	display: block;
+}

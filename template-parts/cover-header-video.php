@@ -10,7 +10,7 @@ $max_height = is_front_page() ? '105vh' : '70vh';
 $cover_header_classes = is_front_page() ? 'front-page' : '';
 
 // Optional: set video URL (you can use a static file or get from a custom field)
-$video_url = get_template_directory_uri() . '/assets/video/cover-header-video.mp4';
+$video_url = get_template_directory_uri() . '/assets/video/main-header-video.mp4';
 
 $front_page_icon = '';
 $video_play_button_src = 'style="background-image: url(' . get_site_url() . '/wp-content/themes/wildernest/assets/images/play.svg)"';
@@ -28,11 +28,11 @@ if (is_front_page()) {
 		Your browser does not support the video tag.
 	</video>
 	<div class="screen-height-container">
-		<div class="play-video-button roboto"><a href="#">Play Full Video</a><span class="video-play-button" <?php echo $video_play_button_src; ?>></span></div>
+		<div class="play-video-button roboto"><a href="<?php echo $video_url; ?>" target="blank">Play Full Video</a><span class="video-play-button" <?php echo $video_play_button_src; ?>></span></div>
 		<div class="cover-header-inner max-width">
 			<!-- Your inner content -->
 			<div class="text-container">
-				<div class="heading-inner-containers">
+				<div class="heading-inner-containers fade-slide-down">
 					<?php if ($front_page_icon != ''): ?>
 						<div class="front-page-icon-container">
 							<img class="front-page-icon" src="<?php echo $front_page_icon; ?>">

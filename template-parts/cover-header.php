@@ -27,7 +27,7 @@ $hide_indicator = (bool) get_post_meta( get_the_ID(), 'wildernest_scroll_indicat
 	<div class="cover-header-inner max-width" <?php echo $cover_inner_style ?>>
 		<div class="text-container">
 			<div class="heading-inner-containers">
-				<h1 class="heading"><?php echo get_the_title(); ?></h1>
+				<h1 class="heading fade-slide-down"><?php echo get_the_title(); ?></h1>
 				<?php if ($subheading != ''): ?>
 					<h2 class="subheading"><?php echo $subheading; ?></h2>
 				<?php endif; ?>
