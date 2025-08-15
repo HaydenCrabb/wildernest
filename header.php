@@ -100,7 +100,7 @@
 
 		<!-- Open Graph / Facebook / LinkedIn -->
 		<meta property="og:type" content="website">
-		<meta property="og:title" content="<?php echo $page_title; ?>">
+		<meta property="og:title" content="Wildernest River | <?php echo $page_title; ?>">
 		<meta property="og:description" content="Discover Wildernest River — a boutique luxury neighborhood offering fully customizable homes along the scenic Boise River in Eagle, Idaho.">
 		<meta property="og:url" content="<?php echo $site_url; ?>">
 		<meta property="og:image" content="<?php echo $featured_image; ?>">

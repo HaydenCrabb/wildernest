@@ -58,6 +58,55 @@ jQuery(function ($) {
             });
         });
     }
+
+    // if ($('.cover-header.static-image').length) {
+    //     //This is a cover-image page, let's animate the scroll down. 
+    //     ScrollTrigger.matchMedia({
+    //         "(min-width: 783px)": function () {
+
+    //             var $header = $('.cover-header.static-image');
+    //             var el = $header[0];
+    //             var scrollDistance = 200;
+    //             var finalHeight = 0;
+
+    //             function lockStartHeight() {
+    //                 el.style.height = Math.round(window.innerHeight * 0.8) + 'px';
+    //                 finalHeight = Math.round((window.innerHeight * 0.8) + scrollDistance) + 'px';
+    //             }
+
+    //             var tween;
+
+    //             function build() {
+    //                 if (tween) { tween.scrollTrigger.kill(); tween.kill(); tween = null; }
+
+    //                 lockStartHeight();
+
+    //                 tween = gsap.to(el, {
+    //                     height: finalHeight,
+    //                     ease: 'none',
+    //                     scrollTrigger: {
+    //                         trigger: el,
+    //                         start: 'top top',
+    //                         end: 'bottom top',
+    //                         scrub: true,
+    //                         invalidateOnRefresh: true
+    //                         // ,markers: true
+    //                     }
+    //                 });
+    //             }
+
+    //             build();
+    //             ScrollTrigger.addEventListener('refreshInit', lockStartHeight);
+
+    //             // Rebuild on resize/orientation
+    //             $(window).on('resize', function () {
+    //                 build();
+    //                 ScrollTrigger.refresh();
+    //             });
+    //         }
+
+    //     });
+    // }
 });
 
 
